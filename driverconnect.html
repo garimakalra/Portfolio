@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Making fleet compliance something drivers actually trust — DriverConnect · Garima Kalra</title>
-<meta name="description" content="Making fleet compliance something drivers actually trust — DriverConnect at Rand McNally. A product design case study by Garima Kalra.">
+<title>DriverConnect — Improving New User Onboarding · Garima Kalra</title>
+<meta name="description" content="Rebuilding DriverConnect's ELD onboarding into a guided, task-driven flow — cutting setup-related support requests 50% — a UX case study by Garima Kalra.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Expanded:wght@600;700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="casestudy.css">
 </head>
 <body>
 
@@ -23,80 +24,194 @@
   </div>
 </div>
 
-<header class="hero case">
+<!-- HERO -->
+<header class="hero">
   <div class="wrap">
-    <div class="eyebrow">DriverConnect · Rand McNally</div>
-    <!-- EDIT: case study headline (lead with the outcome, not the brief) -->
-    <h1>Making fleet compliance something drivers actually trust</h1>
-    <!-- EDIT: one-paragraph setup -->
-    <p class="lede">DriverConnect is Rand McNally's electronic logging and fleet compliance product. I designed for drivers working under real regulatory pressure, where a confusing interface has legal consequences.</p>
-    <div class="facts">
-      <div class="fact"><div class="k">Role</div><div class="v">UX/UI Designer</div></div>
-      <div class="fact"><div class="k">Company</div><div class="v">Rand McNally</div></div>
-      <div class="fact"><div class="k">Timeline</div><div class="v">2016 — 2017</div></div>
-      <div class="fact"><div class="k">Outcome</div><div class="v">[ add headline result ]</div></div>
+    <div class="hero-kicker"><span class="sq"></span>Fleet &amp; Compliance · Mobile (ELD)</div>
+    <h1>Getting drivers set up right — before a bad start becomes a cancelled account.</h1>
+    <p class="hero-sub">Rebuilding DriverConnect's onboarding into a guided, task-driven flow so truck drivers and fleets pair their electronic logging device (ELD) correctly the first time — <span class="hl">cutting setup-related support requests 50%.</span></p>
+    <div class="hero-meta">
+      <span class="chip"><b>Product</b> · DriverConnect (Rand McNally)</span>
+      <span class="chip"><b>Users</b> · Drivers / fleet managers</span>
+      <span class="chip"><b>Platform</b> · Android ELD app + web portal</span>
+      <span class="chip"><b>Role</b> · UX/UI Designer</span>
     </div>
   </div>
 </header>
 
-<!-- 01 — OUTCOME / CONTEXT -->
-<section>
-  <div class="wrap read reveal">
-    <div class="eyebrow-s"><span class="num">01</span> The situation</div>
-    <h2 class="sec">Compliance you can't afford to get wrong.</h2>
-    <p>Placeholder context for DriverConnect. The driver's reality, ELD regulations, and why trust and clarity mattered so much.</p>
-    <div class="swapnote"><b>&#9622; PLACEHOLDER:</b> Replace with the real context — the product, the users, and the messy situation you walked into. Lead the reader toward the problem you were actually asked to solve.</div>
-  </div>
-</section>
-
-<!-- 02 — THE PROBLEM / YOUR CALL -->
-<section>
-  <div class="wrap read reveal">
-    <div class="eyebrow-s"><span class="num">02</span> The problem &amp; my approach</div>
-    <h2 class="sec">Designing for high stakes and low tolerance for friction.</h2>
-    <p>Placeholder. The tension between regulatory completeness and a driver's need for speed and clarity. Your approach.</p>
-    <p class="pull">Placeholder pull-quote: the key judgment call or bet that defined this project.</p>
-    <div class="swapnote"><b>&#9622; PLACEHOLDER:</b> This is your staff-level section. Show the ambiguity, the constraints, the competing stakeholders, and the bet you made — including what you chose <em>not</em> to do. Swap in the artifact that proves it.</div>
-  </div>
-</section>
-
-<!-- 03 — THE WORK -->
-<section>
+<!-- 01 OVERVIEW -->
+<section id="overview">
   <div class="wrap reveal">
     <div class="read">
-      <div class="eyebrow-s"><span class="num">03</span> The work</div>
-      <h2 class="sec">The experience.</h2>
-      <p>Placeholder. The logging flows, status clarity, and error prevention you designed.</p>
+      <div class="eyebrow"><span class="num">01</span> Overview</div>
+      <h2 class="section-head">A product shipping fast — with two quiet costs.</h2>
+      <p class="lead">DriverConnect is a fleet-management product in Rand McNally's commercial line, used by truck drivers, fleet managers, and owner-operators to handle compliance, daily operations, and the constant back-and-forth between the cab and the office.</p>
+      <p>The product was shipping fast with heavy C-suite involvement, but two things were quietly costing the business: new customers struggled to get set up correctly, and drivers and fleet managers had no reliable way to communicate inside the product. I owned the design work on both — rebuilding onboarding into a guided, task-driven flow, and designing an in-app messaging feature that moved fleet–driver coordination out of phone calls, texts, and paper. This case study focuses on the onboarding rebuild.</p>
     </div>
-    <div class="swapnote"><b>&#9622; PLACEHOLDER:</b> Drop your key screens, flows, or before/after here. Use <code>&lt;img class="shot" ...&gt;</code> for a single image or <code>&lt;div class="shot-pair"&gt;</code> for a before/after pair (both are ready in the stylesheet).</div>
+    <img class="shot" src="dc-cover.jpg" alt="DriverConnect dashboard on tablet and phone — work and break timers, the HOS logbook graph, DVIR, rule set, and duty-status controls">
+    <div class="caption">DriverConnect — the driver dashboard: HOS timers, logbook, and DVIR</div>
   </div>
 </section>
 
-<!-- 04 — IMPACT -->
-<section>
+<!-- 02 THE CHALLENGE -->
+<section id="challenge" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
   <div class="wrap reveal">
     <div class="read">
-      <div class="eyebrow-s"><span class="num">04</span> Impact</div>
-      <h2 class="sec">What it changed</h2>
-      <p>Placeholder. Outcomes — fewer errors, driver trust, adoption.</p>
+      <div class="eyebrow"><span class="num">02</span> The challenge</div>
+      <h2 class="section-head">Feature velocity had outpaced usability.</h2>
+      <p>DriverConnect was being built at speed, and one problem surfaced again and again in support tickets and stakeholder conversations: <strong>onboarding was confusing and ineffective.</strong> New customers frequently set themselves up wrong — or gave up — before they ever reached daily use.</p>
+      <p class="pull">A problem that matters most for a fleet product: the early days of a customer relationship, when a bad experience turns into a cancelled account or a flood of support calls.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 USERS -->
+<section id="users">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">03</span> Understanding the users</div>
+      <h2 class="section-head">Two audiences, one shared need: get going fast, stay coordinated.</h2>
+      <ul class="dlist">
+        <li><b>Drivers</b> operate from inside a truck cab — limited time, variable connectivity, low tolerance for fiddly setup. Many aren't highly technical and are pairing an ELD, a piece of regulated hardware, for the first time.</li>
+        <li><b>Fleet managers and owner-operators</b> coordinate multiple drivers, vehicles, and compliance requirements at once. They need drivers operational quickly, and to stay in contact without chasing people by phone.</li>
+      </ul>
+      <p style="margin-top:22px;">The shared thread: both groups need to <em>get going fast and stay coordinated</em>, and friction at either point creates real operational and compliance risk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 RESEARCH -->
+<section id="research" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">04</span> Discovery &amp; research</div>
+      <h2 class="section-head">I approached both problems with the same user-centered process.</h2>
+    </div>
+    <div class="read">
+      <div class="rows">
+        <div class="row"><div class="rk">01</div><div class="rt"><b>Listening tours.</b> Met with engineering, product, sales, and customer support to align on priorities and surface the complaints that came up most often.</div></div>
+        <div class="row"><div class="rk">02</div><div class="rt"><b>Interviews &amp; usability testing.</b> Ran sessions with users to find where onboarding broke down and how drivers and fleets were communicating today.</div></div>
+        <div class="row"><div class="rk">03</div><div class="rt"><b>Competitive analysis.</b> For onboarding, I studied products that require hardware pairing — Fitbit, Apple Watch, and KeepTruckin — to pull out best practices for guided, task-based setup.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 WHAT I FOUND -->
+<section id="findings">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">05</span> What I found</div>
+      <h2 class="section-head">Four failure points, all upstream of daily use.</h2>
+      <ul class="dlist">
+        <li><b>Fragmented account setup.</b> Users signing up from the app unknowingly created separate company accounts, generating frequent requests to merge fleets.</li>
+        <li><b>Missed configuration steps.</b> Many users skipped setup entirely and unknowingly ran on default settings, corrupting data accuracy downstream.</li>
+        <li><b>Device confusion.</b> The Android device list was overwhelming and unclear for drivers.</li>
+        <li><b>Unclear starting point.</b> Users didn't know when or how to pair their ELD device.</li>
+      </ul>
+    </div>
+    <div class="shot-trio">
+      <div><img class="shot" style="margin:0;" src="dc-before-login.jpg" alt="DriverConnect login screen"><div class="caption">Log in — the entry point</div></div>
+      <div><img class="shot" style="margin:0;" src="dc-before-device.jpg" alt="The ELD device-selection list — a long list of RME50 device IDs"><div class="caption">Device confusion — a raw list of ELDs</div></div>
+      <div><img class="shot" style="margin:0;" src="dc-before-confirmation.jpg" alt="Sign-up confirmation auto-assigning a company code, timezone, and ruleset"><div class="caption">Defaults auto-assigned, unseen</div></div>
+    </div>
+    <div class="read">
+      <p>Setup was also followed by a static, tap-through feature tour — informative in theory, but easy to skip and easy to forget, so the steps that mattered slipped right past new users.</p>
+    </div>
+    <div class="shot-trio">
+      <div><img class="shot" style="margin:0;" src="dc-tour-company.jpg" alt="Static app-tour screen: company information"><div class="caption">Tour — company info</div></div>
+      <div><img class="shot" style="margin:0;" src="dc-tour-gauges.jpg" alt="Static app-tour screen: vehicle gauges"><div class="caption">Tour — gauges</div></div>
+      <div><img class="shot" style="margin:0;" src="dc-tour-timers.jpg" alt="Static app-tour screen: hours-of-service timers"><div class="caption">Tour — HOS timers</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 REDESIGN -->
+<section id="redesign" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">06</span> Redesigning onboarding</div>
+      <h2 class="section-head">The hardest question was sequencing: where does setup begin?</h2>
+      <p><strong>Goal:</strong> a guided, actionable flow that helps users complete setup correctly, reduces support dependency, and gets drivers operational faster without overwhelming them. The hardest question was what to ask the user to do first. I sketched three approaches:</p>
+      <ul class="dlist">
+        <li><b>Make ruleset / timezone configuration mandatory</b> up front, so no one operates on defaults.</li>
+        <li><b>Pair the ELD device first,</b> then collect company info.</li>
+        <li><b>Pull company info automatically via DOT#,</b> so the user joins the right fleet without manual entry.</li>
+      </ul>
+    </div>
+    <div class="shot-trio">
+      <div><img class="shot" style="margin:0;" src="dc-sketch-ruleset.jpg" alt="Sketch: mandatory ruleset/timezone config first"><div class="caption">Option 1 — config first</div></div>
+      <div><img class="shot" style="margin:0;" src="dc-sketch-eld.jpg" alt="Sketch: pair ELD device first"><div class="caption">Option 2 — pair ELD first</div></div>
+      <div><img class="shot" style="margin:0;" src="dc-sketch-dot.jpg" alt="Sketch: get company info through DOT#"><div class="caption">Option 3 — DOT# (chosen)</div></div>
+    </div>
+
+    <div class="callout reveal">
+      <div class="ck">The key decision</div>
+      <p>I landed on the <strong>DOT#-driven path.</strong> It directly solved the most expensive problem — fragmented accounts and manual fleet setup — by letting a user join the correct existing fleet from a single, familiar number instead of accidentally spinning up a duplicate company. Where the other options reduced friction at one step, this one <strong>removed an entire class of support tickets.</strong></p>
+    </div>
+
+    <div class="read" style="margin-top:34px;">
+      <h3 class="subhead">Key design decisions</h3>
+      <ul class="dlist">
+        <li>Replaced static tutorial screens with <b>step-by-step, task-driven onboarding.</b></li>
+        <li>Embedded <b>account setup and fleet-hierarchy creation</b> into onboarding.</li>
+        <li>Simplified <b>device selection</b> with clearer states and language.</li>
+        <li>Introduced <b>progressive disclosure</b> to reduce cognitive load.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 07 TESTING -->
+<section id="testing">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">07</span> Testing &amp; iterations</div>
+      <h2 class="section-head">Prototyped, tested, and iterated on real feedback.</h2>
+      <p>I worked closely with engineering to prototype and test the flows, and iterated on real user feedback before final implementation. Usability testing validated that:</p>
+      <ul class="dlist">
+        <li>Using <b>DOT# made joining a fleet reliable</b>, cutting setup errors.</li>
+        <li>Users <b>selected the correct ELD device</b> without confusion.</li>
+        <li><b>Time-to-first-use dropped.</b></li>
+      </ul>
+    </div>
+    <figure style="max-width:600px;margin:28px auto 0;">
+      <img class="shot" style="margin:0;" src="dc-flow-final.gif" alt="Animated walkthrough of the redesigned DriverConnect onboarding flow">
+      <div class="caption">The redesigned, task-driven onboarding flow</div>
+    </figure>
+  </div>
+</section>
+
+<!-- 08 OUTCOME -->
+<section id="outcome" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">08</span> Final outcome</div>
+      <h2 class="section-head">The cheapest fix was upstream.</h2>
     </div>
     <div class="metrics">
-      <div class="metric"><div class="big">00%</div><div class="lbl">Placeholder metric — replace with a real result</div></div>
-      <div class="metric"><div class="big">00</div><div class="lbl">Placeholder metric — replace with a real result</div></div>
-      <div class="metric"><div class="big">00x</div><div class="lbl">Placeholder metric — replace with a real result</div></div>
+      <div class="metric teal"><div class="big">−50%</div><div class="lbl">Setup-related customer support requests</div></div>
+      <div class="metric"><div class="big">100%</div><div class="lbl">Of new users configured their fleet via DOT#</div></div>
+      <div class="metric"><div class="big">↓ time</div><div class="lbl">Time-to-first-use dropped; drivers operational faster</div></div>
     </div>
-    <div class="read">
-      <div class="swapnote"><b>&#9622; PLACEHOLDER:</b> Real numbers if you have them; a qualitative outcome and a customer/stakeholder quote if you don't. Even a shipped-and-adopted statement beats an empty slot.</div>
+    <div class="read" style="margin-top:36px;">
+      <ul class="dlist">
+        <li>Improved onboarding <b>clarity and completion rates.</b></li>
+        <li><b>Reduced setup-related support requests 50%.</b></li>
+        <li>More consistent data configuration across fleets — <b>100% of new users used DOT#</b> to configure their fleet.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- 05 — REFLECTION -->
-<section>
-  <div class="wrap read reveal">
-    <div class="eyebrow-s"><span class="num">05</span> Reflection</div>
-    <h2 class="sec">What I'd carry forward</h2>
-    <p>Placeholder. What you learned designing safety-critical, regulated mobile experiences.</p>
+<!-- 09 REFLECTION -->
+<section id="reflection">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">09</span> Reflection</div>
+      <h2 class="section-head">Solve the sequencing, remove the ticket class.</h2>
+      <p class="lead">The biggest win didn't come from polishing a screen — it came from choosing what to ask first. Anchoring setup on a number drivers already know (their DOT#) quietly erased the duplicate-account problem before it could start. In onboarding, the cheapest fixes usually live upstream of the screen where the pain shows up.</p>
+    </div>
   </div>
 </section>
 

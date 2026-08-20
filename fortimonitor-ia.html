@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="fortimonitor-ia.css">
 </head>
 <body>
-
+ 
 <!-- ===== shared nav ===== -->
 <div class="topbar">
   <div class="wrap">
@@ -24,7 +24,7 @@
     </nav>
   </div>
 </div>
-
+ 
 <!-- HERO -->
 <header class="hero">
   <div class="hero-inner">
@@ -39,7 +39,7 @@
         <span class="chip"><b>Focus</b> · Findability &amp; scalability</span>
       </div>
     </div>
-
+ 
     <!-- IA SITEMAP -->
     <div class="ia-map" role="img" aria-label="The redesigned FortiMonitor information architecture: six task-based top-level destinations, each with its key sub-items">
       <div class="ia-map-head">
@@ -48,7 +48,7 @@
       </div>
       <div class="ia-map-body">
         <div class="ia-root"><span class="rdot"></span>FortiMonitor<span class="rmeta">6 destinations</span></div>
-
+ 
         <div class="ia-node">
           <div class="ia-dest"><span class="di">&#9670;</span>Dashboards<span class="badge new">views unified</span></div>
           <div class="ia-kids">My Dashboards · Infrastructure Map · Topology · Netflow</div>
@@ -77,7 +77,7 @@
     </div>
   </div>
 </header>
-
+ 
 <!-- TLDR -->
 <div class="tldr">
   <div class="wrap">
@@ -95,7 +95,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- 01 CONTEXT -->
 <section id="context">
   <div class="wrap reveal">
@@ -114,7 +114,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- 02 PARALLEL TRACK -->
 <section id="approach" style="padding-top:0;">
   <div class="wrap reveal">
@@ -124,7 +124,7 @@
       <p>Post-acquisition, the roadmap moved fast. Fabric integration shipped, then FortiCloud IAM, alongside a steady stream of other feature work I was designing at the same time. Navigation was a known, growing pain point throughout — but it was never something the team paused everything to fix in one clean pass.</p>
       <p>So I carried the IA work as an <strong>ongoing, parallel UX effort</strong>. While shipping features on one side, I ran the research for a navigation overhaul on the other — card sorts and tree tests accumulating over time — so that when the revamp landed, it was grounded in evidence and the structure could hold everything the integrations had already added.</p>
     </div>
-
+ 
     <div class="lanes reveal">
       <div class="lanes-bar">
         <span class="tl"><i></i><i></i><i></i></span>
@@ -157,13 +157,13 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="read" style="margin-top:40px;">
       <p>Doing it this way was the harder path — foundational IA rarely gets a clean, dedicated slot on the roadmap. But running the research continuously, rather than waiting for a pause that was never going to come, is what let the overhaul land grounded and validated instead of rushed to catch up.</p>
     </div>
   </div>
 </section>
-
+ 
 <!-- 03 RESEARCH -->
 <section id="research" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
   <div class="wrap reveal">
@@ -172,7 +172,7 @@
       <h2 class="section-head">Navigation decisions came from user behavior, not internal bias.</h2>
       <p>To learn how the product was actually used — and where the roadmap was headed — I immersed myself in both the organizational and the customer perspective before touching structure.</p>
     </div>
-
+ 
     <div class="rows">
       <div class="row reveal"><div class="rk">01</div><div class="rt"><b>Listening tours.</b> Met with engineering, product, sales, and customer success to surface pain points and expectations — and studied adjacent Fortinet and competitor products for patterns.</div></div>
       <div class="row reveal"><div class="rk">02</div><div class="rt"><b>Customer interviews.</b> Talked with existing customers to uncover what worked in Panopta and where they struggled — findability and transient navigation came up again and again.</div></div>
@@ -180,7 +180,7 @@
       <div class="row reveal"><div class="rk">04</div><div class="rt"><b>Tree testing.</b> Validated task findability in the proposed structure — confirming key improvements and flagging areas to adjust.</div></div>
       <div class="row reveal"><div class="rk">05</div><div class="rt"><b>Usability testing &amp; analytics.</b> Watched users complete tasks on top pages, and read heatmaps and click paths to see how people actually moved through the product.</div></div>
     </div>
-
+ 
     <div class="read" style="margin-top:36px;">
       <p><strong>What research consistently returned:</strong> users struggled with findability — long menus and cluttered pages made navigation frustrating — and transient navigation left them unsure where they were or where they could go next. That, plus the ambiguity of early post-acquisition ownership, is what the IA had to solve.</p>
     </div>
@@ -188,7 +188,7 @@
     <div class="caption">Research board — inspiration &amp; competitive audit, card sorting, and tree testing</div>
   </div>
 </section>
-
+ 
 <!-- 04 INTERPRETATION -->
 <section id="interpret">
   <div class="wrap reveal">
@@ -199,7 +199,7 @@
       <p>Five broad affinity clusters emerged. But in two places, the sort simply <em>reproduced</em> the confusion I was trying to fix: users lumped everything configurable into one pile — exactly like the old Settings menu had trained them to — and they merged planned maintenance with unplanned incidents. Research told me how users <span class="obs">currently think</span>; my job was to decide where that thinking should be <span class="des">honored</span> and where it was an artifact of the broken structure.</p>
     </div>
   </div>
-
+ 
   <div class="wrap reveal" style="margin-top:16px;">
     <div class="console-block">
       <div class="cb-bar">
@@ -241,7 +241,7 @@
       <div class="caption">Card-sort similarity matrix</div>
     </figure>
   </div>
-
+ 
   <div class="wrap reveal">
     <div class="read" style="margin-top:44px;">
       <h3 class="subhead">Three interpretation moves</h3>
@@ -266,7 +266,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- 05 NEW IA -->
 <section id="ia" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
   <div class="wrap reveal">
@@ -275,7 +275,7 @@
       <h2 class="section-head">Six task-based destinations, each holding the settings it governs.</h2>
       <p>The research gave a clear mandate: users navigate by <strong>what they're trying to do</strong>, not by how the system is built. They separated <em>looking at</em> their infrastructure from <em>setting up</em> monitoring from <em>responding to</em> incidents — and the old IA violated all three by scattering related tasks across unrelated menus. The worst offender was a global Settings menu that had grown into a 13-item junk drawer.</p>
     </div>
-
+ 
     <div class="ba reveal">
       <div class="navcard old">
         <div class="nh">Before · Top-level nav <span class="cnt">5 menus</span></div>
@@ -300,11 +300,11 @@
       </div>
     </div>
     <div class="caption">Old vs. new top-level navigation</div>
-
+ 
     <div class="read" style="margin-top:48px;">
       <h3 class="subhead">Five structural decisions</h3>
     </div>
-
+ 
     <div class="decgrid">
       <div class="decrow reveal">
         <div class="dnum">1</div>
@@ -347,7 +347,7 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="read" style="margin-top:40px;">
       <p>Alongside the top-level restructure, I reorganized the instance details page — replacing linear tabs with a secondary left-nav that makes the most-used page faster to act on — and moved from lo-fi sketches into mid-fi prototypes, sharing weekly builds with engineering to keep design decisions inside what was technically feasible.</p>
     </div>
@@ -367,7 +367,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- 06 IMPACT -->
 <section id="impact">
   <div class="wrap reveal">
@@ -381,12 +381,12 @@
     <div class="caption">The usability-testing widget, embedded in-product to recruit real customers</div>
     <img class="shot" src="fmia-tree-test.jpg" alt="Tree test results overview: 72.7% task success, 66.9% directness, 17 of 21 respondents completed">
     <div class="caption">Tree test of the proposed structure — 72.7% success · 66.9% directness</div>
-
+ 
     <div class="shipped reveal">
       <span class="stag">Shipped</span>
       <p class="stxt">The redesigned, task-based navigation shipped to <b>FortiMonitor's enterprise customers</b> on the Neutrino design system.</p>
     </div>
-
+ 
     <div class="vgrid reveal">
       <div class="vcard">
         <div class="vico">&#10003;</div>
@@ -404,11 +404,11 @@
         <p>Moderated and unmoderated sessions validated what users expect to see first, shaping the final hierarchy of the new dashboard and nav.</p>
       </div>
     </div>
-
+ 
     <div class="read" style="margin-top:40px;">
       <p>And it landed well with the people who live in the product:</p>
     </div>
-
+ 
     <div class="quotes reveal">
       <div class="quote">
         <p class="qt">"The GUI for FortiMonitor has changed and it looks amazing." 👌</p>
@@ -427,7 +427,7 @@
         <div class="qa">Enterprise customer</div>
       </div>
     </div>
-
+ 
     <div class="read" style="margin-top:36px;">
       <p>To land the change, I partnered with six front-end engineers and the EM through execution — providing design specs, reviewing builds, supporting QA against the Neutrino design system, and designing an in-app announcement and guided walkthrough (via Pendo) so existing users were onboarded into the new structure rather than surprised by it.</p>
     </div>
@@ -435,7 +435,7 @@
     <div class="caption">In-app guided walkthrough (Pendo) onboarding existing users into the new navigation</div>
   </div>
 </section>
-
+ 
 <!-- 07 REFLECTION -->
 <section id="reflection" style="background:var(--surface);border-top:1px solid var(--line);">
   <div class="wrap reveal">
@@ -463,7 +463,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== shared footer ===== -->
 <footer>
   <div class="wrap">
@@ -477,7 +477,7 @@
     <p class="copy">© 2026 Garima Kalra · Information Architecture case study</p>
   </div>
 </footer>
-
+ 
 <script src="site.js"></script>
 </body>
 </html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ascendon — Porting Legacy Complexity to SaaS · Garima Kalra</title>
+<meta name="description" content="Migrating CSG's catalog-management and customer-care modules off a legacy Silverlight system into Ascendon at 100% functional parity — a UX case study by Garima Kalra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Expanded:wght@600;700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="casestudy.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>GARIMA KALRA</a>
+    <nav>
+      <a href="index.html#work">Work</a>
+      <a href="about.html">About</a>
+      <a class="hide-sm" href="mailto:hello@garimakalra.com">Email</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-kicker"><span class="sq"></span>Enterprise SaaS · Subscription &amp; Billing</div>
+    <h1>Porting legacy complexity to SaaS — without losing what enterprises depend on.</h1>
+    <p class="hero-sub">Migrating CSG's catalog-management and customer-care modules off an aging Silverlight system into Ascendon — <span class="hl">both ported to 100% functional parity</span> — while redesigning the nested, workaround-laden workflows that made the legacy experience slow and error-prone.</p>
+    <div class="hero-meta">
+      <span class="chip"><b>Product</b> · Ascendon (CSG)</span>
+      <span class="chip"><b>Users</b> · CSRs &amp; catalog admins</span>
+      <span class="chip"><b>Role</b> · UX/UI Designer</span>
+      <span class="chip"><b>Focus</b> · Legacy → SaaS parity &amp; usability</span>
+    </div>
+  </div>
+</header>
+
+<!-- 01 OVERVIEW -->
+<section id="overview">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">01</span> Overview</div>
+      <h2 class="section-head">Lifting years of interdependent functionality off legacy — intact.</h2>
+      <p class="lead">Ascendon is CSG's cloud subscription, billing, and monetization platform. Building it as a modern SaaS product meant lifting years of deeply interdependent functionality out of a legacy Silverlight system without losing the capabilities enterprise customers depended on every day.</p>
+      <p>I joined as a UX Designer on a team of six, each owning different modules, and worked across the two hardest-to-port areas of the product:</p>
+      <ul class="dlist">
+        <li><b>Studio (catalog management)</b> — where admins build, structure, and price the products customers subscribe to.</li>
+        <li><b>Customer Care</b> — where customer-service reps (CSRs) resolve billing questions and manage accounts.</li>
+      </ul>
+      <p style="margin-top:22px;"><strong>The result:</strong> both modules were fully ported from legacy to Ascendon — 100% of the functionality migrated — and the redesigns simplified the workflows that had made the legacy experience error-prone.</p>
+    </div>
+    <img class="shot" src="asc-cover.jpg" alt="The Ascendon platform — module launcher showing Customer Care, Studio, Reporting, Billing and more">
+    <div class="caption">Ascendon — the SaaS platform's module launcher (Customer Care and Studio among them)</div>
+  </div>
+</section>
+
+<!-- 02 MY ROLE -->
+<section id="role" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">02</span> My role</div>
+      <h2 class="section-head">Both modules were team efforts. Here's what I drove.</h2>
+      <p>Both modules were team efforts under a UX Lead. Within that, these are the specific decisions and designs I owned:</p>
+    </div>
+    <div class="read">
+      <div class="rows">
+        <div class="row"><div class="rk">Studio</div><div class="rt"><b>The Offers workflow.</b> As one of two designers on the catalog port, I took the "Offers" entity from research synthesis through hi-fi — and made the call to treat the team's "wizard" request as a need for <em>orientation</em> rather than more linear steps, then designed the breadcrumb-and-hierarchy structure that answered it.</div></div>
+        <div class="row"><div class="rk">Care</div><div class="rt"><b>Pushing Customer Care toward real research.</b> As one of three designers on the module, I argued for grounding it in fieldwork instead of assumptions — then co-ran the on-site contextual inquiry and conducted the usability testing that shaped the redesign.</div></div>
+        <div class="row"><div class="rk">Care</div><div class="rt"><b>The same-bill dashboard insight.</b> I designed the CSR dashboard around a single decision: put the customer's exact invoice in front of the rep, turning bill disputes from a data problem into an empathy one.</div></div>
+      </div>
+      <p style="margin-top:30px;">Across both modules, the throughline was the same: take a nested, workaround-laden legacy experience and give power users structure, guidance, and a constant sense of <em>where they are</em> in the system.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 DOMAIN -->
+<section id="domain">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">03</span> Getting fluent in a hard domain</div>
+      <h2 class="section-head">Before I could design anything credible, I had to understand it.</h2>
+      <p>I came on mid-flight, into a product dense with billing and telecom jargon. So I ran listening tours with product owners, product managers, and the client-services teams who onboard and maintain customer catalogs. I worked through CSG University training videos, intranet articles, and legacy help docs. And I clicked through the legacy Silverlight system myself, then re-listened to recorded client sessions — which suddenly made sense once I'd seen the screens being described.</p>
+    </div>
+    <div class="shot-pair">
+      <div><img class="shot" style="margin:0;" src="asc-legacy-care.jpg" alt="Customer Care module in the legacy Silverlight system"><div class="caption">Customer Care — legacy Silverlight</div></div>
+      <div><img class="shot" style="margin:0;" src="asc-legacy-studio.jpg" alt="Content Studio catalog in the legacy Silverlight system"><div class="caption">Studio — legacy Silverlight</div></div>
+    </div>
+    <img class="shot" src="asc-legacy-studio-detail.jpg" alt="Drilling into one product's nested detail in the legacy Studio — a long left rail of tabs and fields">
+    <div class="caption">Studio — the nested detail behind a single product</div>
+  </div>
+</section>
+
+<!-- 04 STUDIO -->
+<section id="studio" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">04</span> Part 1 — Studio: porting the catalog</div>
+      <h2 class="section-head">"Wizard" didn't mean more steps. It meant orientation.</h2>
+      <p>Catalog management is where the business models its products — and in the legacy system, it was punishing. Research with the client-services team surfaced two clear themes:</p>
+      <ul class="dlist">
+        <li><b>Users got lost</b> in the nested, dependent workflows required to create a product.</li>
+        <li>They asked for a <b>"wizard-like" guided flow.</b> But most of these tasks were <em>already</em> step-by-step in the legacy system — so the real need wasn't more steps. It was <b>orientation</b>: knowing where you are, what's required, and how to get back.</li>
+      </ul>
+    </div>
+
+    <figure style="max-width:640px;margin:28px auto 0;">
+      <img class="shot" style="margin:0;" src="asc-studio-research.jpg" alt="Research synthesis — key takeaways from Studio interviews: object-oriented not workflow-oriented, users get lost in nested workflows, desire for guidance">
+      <div class="caption">Research synthesis — key takeaways from Studio interviews</div>
+    </figure>
+
+    <div class="read"><p class="pull">That reframe — <span class="tealw">"wizard" meant guidance, not linearity</span> — is what shaped my approach to Offers.</p></div>
+
+    <div class="read">
+      <h3 class="subhead">Designing the Offers workflow</h3>
+      <p>Working from our shared ideation sessions, I created block-frames for the Offers entity focused on making the structure legible: clear hierarchy, a persistent sense of place, and a breadcrumb path so users could drill into pricing detail and find their way back without losing context. I presented the direction in our weekly product-and-engineering touchpoint, folded in feedback, and moved to high fidelity.</p>
+    </div>
+    <div class="shot-pair">
+      <div><img class="shot" style="margin:0;" src="asc-studio-ideation.jpg" alt="Whiteboard ideation for the Offers workflow"><div class="caption">Whiteboards at a glance</div></div>
+      <div><img class="shot" style="margin:0;" src="asc-studio-blockframes.jpg" alt="Block-frames for the Offers entity"><div class="caption">Block-frames — Offers</div></div>
+    </div>
+
+    <div class="read"><h3 class="subhead" style="margin-top:20px;">Final designs — Studio</h3></div>
+    <img class="shot" src="asc-studio-offers.jpg" alt="Studio Offers page — final design">
+    <div class="caption">Studio — Offers page</div>
+    <div class="shot-pair">
+      <div><img class="shot" style="margin:0;" src="asc-studio-pricing.jpg" alt="Offers, options and pricing page"><div class="caption">Offers → Options &amp; Pricing</div></div>
+      <div><img class="shot" style="margin:0;" src="asc-studio-breadcrumb.jpg" alt="Drill to pricing plan detail with a breadcrumb back"><div class="caption">Drill to pricing detail, with a breadcrumb back</div></div>
+    </div>
+    <div class="read">
+      <p>The breadcrumb and consistent structure directly answered the "I'm lost" problem: users could move through the dependency chain of an offer without losing their place.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CUSTOMER CARE -->
+<section id="care">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">05</span> Part 2 — Customer Care</div>
+      <h2 class="section-head">Designing for people who'd already built their own tools.</h2>
+      <p>In my second year I moved primarily to Customer Care, and pushed to ground it in real research rather than assumptions. Our UX Lead and I spent two days at a customer site — a day and a half in the customer-care center and a half-day in the retail store where many care-initiated orders were completed.</p>
+    </div>
+    <img class="shot" src="asc-care-store.jpg" alt="The retail store where many care-initiated orders were completed">
+    <div class="caption">The retail store — contextual inquiry</div>
+
+    <div class="read">
+      <p>The most telling observations were physical: <strong>CSRs had built their own toolkit.</strong> Printed code sheets pinned to monitors, cheat-sheets tucked around the cubicle, personal shortcuts layered on top of the software. One estimate was that only a small part of a CSR's job is formally trained — the rest is learned on the floor.</p>
+      <p>The most damning artifact was a printed <strong>error-decoder</strong> taped to the desk — a hand-maintained key translating the legacy system's cryptic messages (<span class="u-mono" style="font-size:13.5px;background:var(--surface);border:1px solid var(--line);padding:1px 6px;border-radius:5px;">A3C24E-HSE IS BULK BLL SRV, ACCT IS NOT</span>) into plain-language causes and fixes. When people keep a decoder ring for your error messages, the error messages <em>are</em> the problem.</p>
+    </div>
+
+    <figure style="max-width:440px;margin:28px auto 0;">
+      <img class="shot" style="margin:0;" src="asc-care-workarounds.jpg" alt="Reason-code and shortcut cheat-sheets taped to a CSR's workstation">
+      <div class="caption">The cheat-sheets CSRs taped to their workstations</div>
+    </figure>
+
+    <img class="shot" src="asc-care-errors.jpg" alt="The taped error-decoder — cryptic legacy error dialogs paired with plain-language explanations and fixes">
+    <div class="caption">The error-decoder taped to the desk — translating the legacy system's cryptic messages</div>
+
+    <div class="read">
+      <p>That raised the questions that drove the redesign: <strong>What product deficiencies were painful enough to require a workaround? And do those workarounds actually work — or do they create more work?</strong> The visit also let us influence roadmap items beyond our immediate scope — primary navigation and the customer dashboard — grounded in what we'd seen rather than what we'd assumed. Throughout, I worked closely with the solution and development teams so the directions we explored stayed within what existing APIs could support.</p>
+    </div>
+
+    <div class="callout reveal">
+      <div class="ck">The key insight</div>
+      <p>The top reason a customer calls is to dispute or understand their bill — usually a <strong>misunderstanding</strong>, not an actual billing error. So the dashboard puts the <strong>same invoice the customer is looking at</strong> directly in front of the CSR — turning a defensive conversation into a shared walk-through, line by line. It solves an empathy problem, not just a data-access one.</p>
+    </div>
+
+    <div class="read">
+      <p style="margin-top:34px;">I paired that with a few decisions aimed squarely at the behaviors we'd watched on-site:</p>
+      <ul class="dlist">
+        <li>A <b>secondary persistent navigation</b> so CSRs always know where they are in the system.</li>
+        <li>The <b>top five most frequently asked questions</b> surfaced on the first screen a CSR sees when pulling up an account.</li>
+        <li>Frequently used actions, customer profile, and recent-activity history brought into reach — <b>folding the cheat-sheet behaviors back into the product itself.</b></li>
+      </ul>
+    </div>
+
+    <div class="shot-pair">
+      <div><img class="shot" style="margin:0;" src="asc-care-scenarios.jpg" alt="Whiteboard mapping what a CSR needs to be able to do, grouped into sections"><div class="caption">Mapping what a CSR needs to do</div></div>
+      <div><img class="shot" style="margin:0;" src="asc-care-nav.jpg" alt="Whiteboard sketches of CSR home, search, and create-new-customer flows"><div class="caption">CSR home, search &amp; create — sketched</div></div>
+    </div>
+
+    <div class="read">
+      <h3 class="subhead" style="margin-top:8px;">Validating it</h3>
+      <p>I ran think-aloud usability sessions with CSRs to test the layout, language, and organization of the new dashboard, then overlaid their feedback to drive revisions before high fidelity.</p>
+    </div>
+
+    <div class="read"><h3 class="subhead" style="margin-top:20px;">Final designs — Customer Care</h3></div>
+
+    <figure style="max-width:440px;margin:28px auto 0;">
+      <img class="shot" style="margin:0;" src="asc-care-dashboard-lofi.jpg" alt="Low-fidelity whiteboard sketch of the CSR dashboard — summary, current invoice, and usage">
+      <div class="caption">The dashboard, in lo-fi</div>
+    </figure>
+
+    <img class="shot" src="asc-care-dashboard.jpg" alt="Customer Care dashboard — account overview with balance, services, and the same invoice the customer sees">
+    <div class="caption">Customer Care dashboard — the same bill, in front of both people</div>
+    <img class="shot" src="asc-care-services.jpg" alt="Customer Care dashboard — services and usage at a glance with wireless voice, data, and messages">
+    <div class="caption">Services &amp; usage at a glance</div>
+  </div>
+</section>
+
+<!-- 06 OUTCOMES -->
+<section id="outcomes" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">06</span> Outcomes</div>
+      <h2 class="section-head">Two of the hardest modules, cleared for SaaS.</h2>
+    </div>
+    <div class="metrics">
+      <div class="metric teal"><div class="big">100%</div><div class="lbl">Functional parity — both modules ported from legacy to Ascendon</div></div>
+      <div class="metric"><div class="big">2</div><div class="lbl">Of the most interdependent modules migrated off legacy Silverlight</div></div>
+      <div class="metric"><div class="big">Same bill</div><div class="lbl">One shared source of truth for CSR and customer</div></div>
+    </div>
+    <div class="read" style="margin-top:36px;">
+      <ul class="dlist">
+        <li><b>Both Studio and Customer Care ported at 100% functional parity</b> — clearing two of the most interdependent areas blocking CSG's migration off legacy and into SaaS.</li>
+        <li>The redesigns didn't just replicate legacy capability. They <b>reduced the "I'm lost" problem</b> through consistent structure, breadcrumbs, and persistent navigation, and <b>designed CSRs' workarounds back into the product</b> so the cheat-sheets taped to a monitor finally had a home inside the software.</li>
+        <li>The same-bill dashboard gave CSRs and customers <b>a shared source of truth</b>, turning bill disputes into guided walk-throughs.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 07 REFLECTION -->
+<section id="reflection">
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow"><span class="num">07</span> Reflection</div>
+      <h2 class="section-head">In enterprise tools, the workarounds are the research.</h2>
+      <p class="lead">The cheat-sheets taped to a CSR's monitor told us more about what the product was missing than any survey could. The most valuable thing we could do wasn't to design something clever — it was to make the system finally do the job people had been quietly compensating for.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h3>Next case study</h3>
+    <p class="ft-sub"><a class="link-b" href="driverconnect.html">DriverConnect — Rand McNally →</a></p>
+    <div class="row" style="margin-top:30px;">
+      <a class="link-b" href="index.html#work">← All work</a>
+      <a class="link-b" href="mailto:hello@garimakalra.com">hello@garimakalra.com</a>
+      <a class="link-b" href="https://www.linkedin.com/in/kalragarima/">LinkedIn</a>
+    </div>
+    <p class="copy">© 2026 Garima Kalra · Ascendon case study</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Incident Investigator — FortiMonitor · Garima Kalra</title>
+<meta name="description" content="AI Incident Investigator — an AI-assisted incident triage concept for FortiMonitor at Fortinet. A product design case study by Garima Kalra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Expanded:wght@600;700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="fortimonitor-ai-incident.css">
+</head>
+<body>
+
+<!-- ===== shared nav ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>GARIMA KALRA</a>
+    <nav>
+      <a href="index.html#work">Work</a>
+      <a href="about.html">About</a>
+      <a class="hide-sm" href="mailto:hello@garimakalra.com">Email</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-kicker"><span class="sq"></span>Enterprise Monitoring · AI Product Design</div>
+      <h1>Monitoring detects problems faster than humans can <span class="hl">understand</span> them.</h1>
+      <p class="hero-sub">An AI Investigator that does the first pass of incident triage — correlating signals, separating <span style="color:#5FD9C9">observed fact</span> from <span style="color:#9F90F0">inferred cause</span> — while the engineer keeps every consequential decision.</p>
+      <div class="hero-meta">
+        <span class="chip"><b>Platform</b> · FortiMonitor</span>
+        <span class="chip"><b>Users</b> · SRE / NOC / DevOps</span>
+        <span class="chip"><b>Scope</b> · End-to-end concept</span>
+        <span class="chip"><b>Focus</b> · Trust &amp; human control in AI</span>
+      </div>
+    </div>
+
+    <!-- SIGNAL VIZ -->
+    <div class="signal-stage" aria-hidden="true">
+      <div class="stage-label">alert stream · correlation</div>
+      <svg class="signal-svg" id="signalSvg" viewBox="0 0 400 368" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="legend">
+        <span class="lg noise"><i></i>noise</span>
+        <span class="lg sig"><i></i>observed signal</span>
+        <span class="lg inf"><i></i>inferred link</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TLDR -->
+<div class="tldr">
+  <div class="wrap">
+    <div class="tldr-col">
+      <h4>The problem</h4>
+      <p>Detection outpaces comprehension. Engineers drown in alerts and burn time gathering context before they can even begin to solve.</p>
+    </div>
+    <div class="tldr-col">
+      <h4>What I designed</h4>
+      <p>An AI Investigator embedded in the incident page that synthesizes a summary, timeline, evidence and next steps — with facts and AI hypotheses visibly separated.</p>
+    </div>
+    <div class="tldr-col">
+      <h4>The staff-level bet</h4>
+      <p>Chose <strong>calibrated assistance over automation</strong>. The AI investigates; the human decides. Trust is the feature, not the risk.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 01 PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head reveal read">
+      <div class="eyebrow"><span class="num">01</span> The problem</div>
+      <h2>Faster detection created a slower kind of work.</h2>
+    </div>
+    <div class="read reveal">
+      <p class="lead">FortiMonitor is a cloud infrastructure and network monitoring platform. It's genuinely good at what it does — it finds anomalies across applications, infrastructure, networks and cloud, and generates a constant stream of metrics and alerts.</p>
+      <p>That strength is also the trap. The system can flag a problem in seconds; a human still needs minutes or hours to understand it. Between the alert firing and the incident being understood, an engineer has to manually decide which alerts matter, find relationships between unrelated-looking events, dig through logs and dashboards, review historical incidents, loop in teammates, and only then reason about root cause and remediation.</p>
+      <p>That gap has a cost. It inflates mean-time-to-resolution, breeds alert fatigue, and quietly concentrates all the real knowledge in a few senior engineers who've simply seen it before.</p>
+    </div>
+
+    <div class="pull reveal">"Monitoring systems can detect problems faster than humans can understand them."</div>
+
+    <div class="statrow reveal">
+      <div class="stat crit">
+        <div class="n">350</div>
+        <div class="k">active incidents on a single<br>enterprise customer account</div>
+      </div>
+      <div class="stat">
+        <div class="n">10k<span class="u">s</span></div>
+        <div class="k">of monitored devices per<br>large customer (TJX, CSX)</div>
+      </div>
+      <div class="stat">
+        <div class="n">"Whack<span class="u">-a-mole"</span></div>
+        <div class="k">round-robin firefighting where<br>root causes go unaddressed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 RESEARCH -->
+<section id="research" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal read">
+      <div class="eyebrow"><span class="num">02</span> Research</div>
+      <h2>I talked to the people living inside the alert stream.</h2>
+    </div>
+    <div class="read reveal">
+      <p>I ran two interviews from different vantage points: a Site Reliability Engineer who investigates incidents daily, and a Customer Success Manager who had onboarded one of FortiMonitor's largest enterprise customers and watched their operations up close. One gave me the texture of the work; the other gave me the scale of it.</p>
+    </div>
+
+    <div class="cards2 reveal">
+      <div class="icard">
+        <div class="role">Interview 01 · SRE</div>
+        <h4>The engineer in the loop</h4>
+        <p>Investigation is mostly <strong>context-gathering</strong> — pulling from multiple tools, logs, dashboards and past incidents before any real problem-solving starts. The same investigation steps repeat across incidents, and finding dependencies and root cause quickly is the hard part.</p>
+        <div class="quote">An assistant that correlated the relevant signals, summarized the incident, and suggested next steps would meaningfully cut cognitive load.</div>
+      </div>
+      <div class="icard">
+        <div class="role">Interview 02 · CSM</div>
+        <h4>The view from scale</h4>
+        <p>Large customers live in constant firefighting mode. Alerts get <strong>round-robin distributed</strong> across a team; people jump on the newest one, and often the issue has already resolved itself by the time it's picked up — so the underlying cause is never fixed.</p>
+        <div class="quote">Noise doesn't just tire the internal team — it spills into subcontracted field crews, making external ticketing harder to manage too.</div>
+      </div>
+    </div>
+
+    <h3 class="subhead reveal">Three findings that shaped the design</h3>
+
+    <div class="reveal">
+      <div class="finding">
+        <div class="fnum">01</div>
+        <div>
+          <h4>Alert fatigue is an operational risk, not just an annoyance</h4>
+          <p>Teams monitoring 1,000+ devices receive huge volumes of low-priority, repetitive alerts. Over time they desensitize — and the real danger is a critical incident lost in the noise.</p>
+          <div class="opp"><b>Design opportunity</b> Instead of treating every alert equally, help answer one question: <em>what requires attention first?</em> — weighing severity, customer impact, affected services and similar past incidents.</div>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="fnum">02</div>
+        <div>
+          <h4>Investigation is fragmented across too many systems</h4>
+          <p>Before solving anything, engineers assemble context from dashboards, logs, traces, deployment history, config changes, docs and prior tickets — all scattered across different tools.</p>
+          <div class="opp"><b>Design opportunity</b> Auto-assemble the incident: affected systems, timeline, related alerts, recent changes, possible causes and recommended investigation steps — in one place.</div>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="fnum">03</div>
+        <div>
+          <h4>Root-cause skill lives in a few senior heads</h4>
+          <p>Experienced engineers resolve faster because they carry system dependencies and failure patterns in their heads. Newer engineers stall — and the org becomes dependent on a handful of people.</p>
+          <div class="opp"><b>Design opportunity</b> Make the AI a knowledge surface: similar past incidents, previous resolutions, relevant docs and dependency relationships — available to everyone, not just veterans.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 FRAMING -->
+<section id="framing">
+  <div class="wrap">
+    <div class="section-head reveal read">
+      <div class="eyebrow"><span class="num">03</span> Framing the design problem</div>
+      <h2>The real question wasn't "can AI do this?" — it was "how much should it?"</h2>
+    </div>
+    <div class="read reveal">
+      <p>It would have been easy to design an AI that just <em>tells engineers the answer</em>. But this domain punishes overconfidence: these are production systems, the AI reasons under uncertainty, and a wrong "root cause" delivered confidently is worse than no answer at all. An engineer who stops thinking is a liability.</p>
+      <p>So I reframed the brief around a tension rather than a feature:</p>
+    </div>
+    <div class="pull reveal">How might we help engineers understand and resolve incidents faster — while keeping them firmly in control and appropriately skeptical?</div>
+    <div class="read reveal">
+      <p>That single reframe drove every subsequent decision: what the AI is allowed to claim, how uncertainty is shown, where automation stops, and how trust is earned rather than assumed. The rest of this case study is really about answering that question well.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PROTOTYPING -->
+<section id="prototyping" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal read">
+      <div class="eyebrow"><span class="num">04</span> Prototyping &amp; testing</div>
+      <h2>I tested the concept before I tested the pixels.</h2>
+    </div>
+    <div class="read reveal">
+      <p>I built two prototypes deliberately, and ran them in a deliberate order — low-fidelity first, high-fidelity second — around a single sample <span class="u-mono" style="font-size:15px;background:var(--observed-soft);padding:1px 7px;border-radius:5px;color:#0a5c53;">Host&nbsp;Unreachable</span> incident. Two participants (an SRE and an engineering manager) walked through both.</p>
+    </div>
+
+    <div class="cards2 reveal" style="margin-top:8px;">
+      <div class="icard">
+        <div class="role">Lo-fi · Wizard of Oz</div>
+        <h4>Is the concept even worth building?</h4>
+        <p>Wireframes only; I revealed investigation results manually while participants thought aloud. Stripped of visual polish, the conversation went straight to <strong>usefulness and trust</strong> — participants proposed new capabilities (topology-aware grouping, historical comparisons, runbook integration, automated countermeasures) rather than critiquing layout.</p>
+      </div>
+      <div class="icard">
+        <div class="role">Hi-fi · Figma Make</div>
+        <h4>Would people actually use it?</h4>
+        <p>A polished, interactive interface. Attention shifted to <strong>information hierarchy and interaction</strong> — panel size, section order, timeline presentation, confidence indicators, and how clearly AI output was distinguished from raw telemetry. The concept was assumed; adoption details surfaced.</p>
+      </div>
+    </div>
+
+    <div class="read reveal">
+      <p style="margin-top:34px;">The two fidelities weren't redundant — they answered different questions. The lo-fi validated <em>whether the problem was worth solving</em> before I invested in craft; the hi-fi exposed the <em>presentation and trust details</em> that would decide adoption. That's the whole argument for prototyping at two fidelities, and I got to see it play out cleanly.</p>
+    </div>
+
+    <h3 class="subhead reveal">How the feedback became design decisions</h3>
+    <div class="maplist reveal">
+      <div class="maprow">
+        <div class="from">"AI output must be clearly distinguished from raw monitoring data."</div>
+        <div class="arr">→</div>
+        <div class="to"><b>Observed vs. Inferred</b> labeling system — the design's core trust mechanism.</div>
+      </div>
+      <div class="maprow">
+        <div class="from">"The timeline should come earlier — it explains the AI's reasoning."</div>
+        <div class="arr">→</div>
+        <div class="to">Timeline promoted up the hierarchy, with inferred events visually marked.</div>
+      </div>
+      <div class="maprow">
+        <div class="from">"Confidence scores increase trust; the evidence panel saves collection time."</div>
+        <div class="arr">→</div>
+        <div class="to">Confidence indicator on the summary; a dedicated <b>evidence</b> section.</div>
+      </div>
+      <div class="maprow">
+        <div class="from">"The panel needs more room for complex incidents."</div>
+        <div class="arr">→</div>
+        <div class="to">Wider investigation panel with room to troubleshoot in place.</div>
+      </div>
+      <div class="maprow">
+        <div class="from">"Let us tell you when an investigation helped."</div>
+        <div class="arr">→</div>
+        <div class="to">Lightweight <b>"Was this helpful?"</b> feedback loop feeding future runs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 THE PRODUCT (dark) -->
+<section id="product" class="darkband">
+  <div class="wrap">
+    <div class="section-head reveal read">
+      <div class="eyebrow on-dark"><span class="num">05</span> The design</div>
+      <h2>The AI Investigator, inside the incident page.</h2>
+    </div>
+    <div class="read reveal">
+      <p class="lead">Rather than a separate tool to context-switch into, the Investigator lives where engineers already are. It does the time-consuming first pass — correlating signals, building the timeline, gathering evidence, proposing likely causes and next steps — and hands the engineer a working hypothesis instead of a blank page.</p>
+    </div>
+
+    <div class="product-grid">
+      <!-- annotations -->
+      <div class="annot reveal">
+        <div class="an">
+          <div class="k">↳ AI Summary</div>
+          <div class="v"><b>The entry point.</b> One synthesized paragraph gives immediate context without disrupting the existing workflow — validated in testing as the right place to start.</div>
+        </div>
+        <div class="an">
+          <div class="k">↳ Confidence</div>
+          <div class="v">A visible confidence signal so engineers calibrate how much to trust the result — not a hidden black box.</div>
+        </div>
+        <div class="an">
+          <div class="k">↳ Timeline</div>
+          <div class="v"><b>Observed</b> events (solid teal) are things the system measured. <b>Inferred</b> events (dashed violet) are the AI's reconstruction. The border style tells you which is which at a glance.</div>
+        </div>
+        <div class="an">
+          <div class="k">↳ Evidence</div>
+          <div class="v">The observed facts, collected for you — the panel that replaces the manual scavenger hunt across tools.</div>
+        </div>
+        <div class="an">
+          <div class="k">↳ Likely cause</div>
+          <div class="v">Presented as a <b>hypothesis</b>, dashed and labeled — never as a confirmed root cause. This is the single most important restraint in the design.</div>
+        </div>
+        <div class="an">
+          <div class="k">↳ Next steps + feedback</div>
+          <div class="v">Suggested steps the engineer chooses to take, and a one-tap way to teach the system whether it helped.</div>
+        </div>
+        <div class="swapnote">// <b>Note:</b> the frame at right is a faithful HTML recreation of the designed interface. Drop your real Figma Make screenshots in to replace it.</div>
+      </div>
+
+      <!-- device recreation -->
+      <div class="device reveal" role="img" aria-label="Recreation of the AI Investigator panel for a Host Unreachable incident">
+        <div class="device-bar">
+          <span class="tl"><i></i><i></i><i></i></span>
+          <span class="path">fortimonitor.io / incidents / #48213</span>
+        </div>
+        <div class="device-body">
+          <div class="inc-head">
+            <div>
+              <div class="t">Host Unreachable</div>
+              <div class="host">db-prod-03 · us-east-1 · 14:32 UTC</div>
+            </div>
+            <span class="sev">Critical</span>
+          </div>
+
+          <div class="aibox">
+            <div class="aihd">
+              <span class="badge-ai">AI Summary</span>
+              <span class="conf">confidence · <b>Medium</b></span>
+            </div>
+            <p>db-prod-03 stopped responding to health checks at 14:32. Correlated packet loss on the upstream switch suggests a network-path failure rather than a host crash. Two related hosts share the same segment.</p>
+          </div>
+
+          <div class="oi-legend">
+            <span class="obs"><span class="sw"></span>Observed</span>
+            <span class="inf"><span class="sw"></span>Inferred</span>
+          </div>
+
+          <div class="tline">
+            <div class="tl-item">
+              <div class="ts">14:31:58</div>
+              <div class="ev">Packet loss detected on switch sw-core-2 <span class="tag">Observed</span></div>
+            </div>
+            <div class="tl-item">
+              <div class="ts">14:32:04</div>
+              <div class="ev">db-prod-03 missed 3 consecutive pings <span class="tag">Observed</span></div>
+            </div>
+            <div class="tl-item inferred">
+              <div class="ts">~14:32</div>
+              <div class="ev">Likely upstream link degradation on shared segment <span class="tag">Inferred</span></div>
+            </div>
+          </div>
+
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--console-muted);margin:16px 0 8px;">Evidence · observed</div>
+          <div class="evgrid">
+            <span class="ev-chip">ping <b>0/5 replies</b></span>
+            <span class="ev-chip">packet loss <b>62%</b></span>
+            <span class="ev-chip">switch <b>sw-core-2</b></span>
+            <span class="ev-chip">segment <b>10.4.2.0/24</b></span>
+          </div>
+
+          <div class="cause">
+            <div class="lbl">Likely cause · hypothesis</div>
+            <p>Upstream connectivity failure on the shared network segment — not a host-level outage. Consistent with 2 similar past incidents on sw-core-2.</p>
+          </div>
+
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--console-muted);margin:16px 0 4px;">Recommended next steps</div>
+          <ol class="steps">
+            <li>Check sw-core-2 interface counters and error rates.</li>
+            <li>Verify reachability of the two related hosts on 10.4.2.0/24.</li>
+            <li>Review recent change history on the core switch config.</li>
+          </ol>
+
+          <div class="fb">
+            <span class="q">Was this investigation helpful?</span>
+            <span class="btns">
+              <button type="button">Yes</button>
+              <button type="button">No</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 OBSERVED VS INFERRED -->
+<section id="trust">
+  <div class="wrap">
+    <div class="section-head reveal read">
+      <div class="eyebrow"><span class="num">06</span> Designing for trust</div>
+      <h2>The most important thing the AI does is admit what it doesn't know.</h2>
+    </div>
+    <div class="read reveal">
+      <p>An AI investigating production incidents is reasoning under uncertainty. The failure mode isn't just being wrong — it's being wrong <em>convincingly</em>, and having an engineer act on a confident hallucination. So I made uncertainty a first-class citizen of the interface. Every piece of information the Investigator shows declares its own epistemic status.</p>
+    </div>
+
+    <div class="oi-split reveal">
+      <div class="oi-card obs">
+        <span class="tag">Observed</span>
+        <h4>What the system measured</h4>
+        <p>Directly recorded facts — a ping failure, a packet-loss reading, an incident timestamp. Presented as evidence, in solid teal.</p>
+        <div class="ex">ping → 0/5 replies<br>packet_loss → 62%<br>ts → 14:32:04 UTC</div>
+      </div>
+      <div class="oi-card inf">
+        <span class="tag">Inferred</span>
+        <h4>What the AI believes</h4>
+        <p>Hypotheses the AI reasoned toward — a likely upstream link failure. Presented as a claim to evaluate, dashed in violet, never as settled truth.</p>
+        <div class="ex">hypothesis → upstream link degradation<br>basis → correlated switch packet loss<br>status → unconfirmed</div>
+      </div>
+    </div>
+
+    <div class="read reveal">
+      <p style="margin-top:36px;">This one distinction does a lot of quiet work. It lets a senior engineer skim the observed facts and move on; it gives a junior engineer a defensible reasoning trail to learn from; and it structurally prevents the product from over-claiming. The AI communicates <strong>what is known, what it believes, and why</strong> — and lets the human decide how much confidence to spend.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 VARIANTS -->
+<section id="variants" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal read">
+      <div class="eyebrow"><span class="num">07</span> The strategic decision</div>
+      <h2>Three versions of "how much AI is too much."</h2>
+    </div>
+    <div class="read reveal">
+      <p>Before committing, I mapped the concept along the axis that actually mattered: how much autonomy the AI holds versus how much control the engineer keeps. Three viable variants sit on that spectrum. Choosing between them was the real design decision — everything else was execution.</p>
+    </div>
+
+    <div class="spectrum reveal">
+      <div class="spec-axis" id="specAxis">
+        <div class="spec-node" data-i="0">
+          <div class="bead">A</div>
+          <div class="lbl">AI Advisor</div>
+          <div class="sub">low automation</div>
+        </div>
+        <div class="spec-node chosen" data-i="1" data-active="true">
+          <div class="bead">B</div>
+          <div class="lbl">AI Investigator</div>
+          <div class="sub">balanced · chosen</div>
+        </div>
+        <div class="spec-node" data-i="2">
+          <div class="bead">C</div>
+          <div class="lbl">AI Operator</div>
+          <div class="sub">high automation</div>
+        </div>
+        <div class="spec-track"></div>
+      </div>
+
+      <div class="spec-detail" id="specDetail" aria-live="polite">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 FINAL RATIONALE -->
+<section id="rationale">
+  <div class="wrap">
+    <div class="section-head reveal read">
+      <div class="eyebrow"><span class="num">08</span> Why the Investigator won</div>
+      <h2>It does the work that's tedious — and stops before the work that's consequential.</h2>
+    </div>
+    <div class="read reveal">
+      <p>The Advisor was too passive to move the metric that mattered: it left the heavy context-gathering on the engineer. The Operator was too eager: letting AI initiate actions against production systems introduces exactly the over-reliance and blast-radius risk this domain can't afford.</p>
+      <p>The <strong>Investigator</strong> sits at the honest middle. It performs the expensive first pass — correlating signals, spotting patterns, summarizing evidence — without making a single consequential change on the engineer's behalf. It makes uncertainty visible and hands over a hypothesis, not a verdict. That's the definition of <em>appropriate reliance</em>: people get the speed of automation while keeping responsibility for the decision.</p>
+    </div>
+
+    <h3 class="subhead reveal">How control stays with the human</h3>
+    <div class="reveal" style="max-width:var(--readw);">
+      <p style="margin-bottom:14px;">Four commitments hold the line:</p>
+      <div style="border-top:1px solid var(--line);">
+        <div style="padding:16px 0;border-bottom:1px solid var(--line);font-size:16.5px;color:var(--ink-2);"><b style="color:var(--ink);font-family:'Archivo',sans-serif;">Recommendations, not instructions.</b> Next steps are suggestions the engineer chooses to take.</div>
+        <div style="padding:16px 0;border-bottom:1px solid var(--line);font-size:16.5px;color:var(--ink-2);"><b style="color:var(--ink);font-family:'Archivo',sans-serif;">No confirmed root cause.</b> The AI offers a labeled hypothesis, never a declared verdict.</div>
+        <div style="padding:16px 0;border-bottom:1px solid var(--line);font-size:16.5px;color:var(--ink-2);"><b style="color:var(--ink);font-family:'Archivo',sans-serif;">Observed vs. inferred, always visible.</b> Engineers can independently assess the evidence.</div>
+        <div style="padding:16px 0;border-bottom:1px solid var(--line);font-size:16.5px;color:var(--ink-2);"><b style="color:var(--ink);font-family:'Archivo',sans-serif;">Consequential actions require approval.</b> Any future automation stops at the human gate.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLE BAND -->
+<section class="principle">
+  <div class="wrap">
+    <div class="eyebrow">Design principle</div>
+    <p>Let the AI do the <span class="hl2">investigation</span> work. Let the engineer make the <span class="hl">consequential</span> decision.</p>
+  </div>
+</section>
+
+<!-- 09 IMPACT + REFLECTION -->
+<section id="reflection">
+  <div class="wrap">
+    <div class="section-head reveal read">
+      <div class="eyebrow"><span class="num">09</span> Impact &amp; reflection</div>
+      <h2>What it's designed to change — and what I'd carry forward.</h2>
+    </div>
+    <div class="read reveal">
+      <p>This is a concept project, so I'll be honest about the difference between what was validated and what is projected. <strong>Validated in testing:</strong> the summary-first entry point, the value of separating observed from inferred, and the demand for evidence and confidence signals. <strong>Designed to deliver:</strong> lower investigation time and less context-switching by collapsing the manual scavenger hunt into one synthesized view — without the over-reliance risk that fuller automation would introduce.</p>
+    </div>
+
+    <h3 class="subhead reveal">What this project taught me</h3>
+    <div class="reflect reveal">
+      <div class="rcard">
+        <h4><span class="mk">01</span> Fidelity is a research instrument</h4>
+        <p>Running lo-fi before hi-fi wasn't process theater. The Wizard of Oz round protected the concept from premature polish and surfaced capability gaps the pretty prototype would have hidden. I'll keep sequencing fidelity to the question I'm asking.</p>
+      </div>
+      <div class="rcard">
+        <h4><span class="mk">02</span> With AI, restraint is the design</h4>
+        <p>The hardest and most valuable decisions were about what the AI should <em>not</em> do — not claim certainty, not act on production, not replace judgment. Designing the guardrails was more consequential than designing the features.</p>
+      </div>
+      <div class="rcard">
+        <h4><span class="mk">03</span> Trust is built in the interface, not the model</h4>
+        <p>Observed-vs-inferred, visible confidence, and hypotheses-not-verdicts are all UI decisions. The same underlying AI could feel trustworthy or reckless depending purely on how its uncertainty is expressed.</p>
+      </div>
+      <div class="rcard">
+        <h4><span class="mk">04</span> Where I'd take it next</h4>
+        <p>Testers pointed to the roadmap: topology-aware incident grouping, separating historical from currently-related incidents, runbook integration, and forecasting to catch anomalies before they become incidents. Natural next bets, grounded in real asks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== shared footer ===== -->
+<footer>
+  <div class="wrap">
+    <h3>Next case study</h3>
+    <p class="ft-sub"><a class="link-b" href="fortimonitor-ia.html">FortiMonitor — Information Architecture →</a></p>
+    <div class="row" style="margin-top:30px;">
+      <a class="link-b" href="index.html#work">← All work</a>
+      <a class="link-b" href="mailto:hello@garimakalra.com">hello@garimakalra.com</a>
+      <a class="link-b" href="https://www.linkedin.com/in/kalragarima/">LinkedIn</a>
+    </div>
+    <p class="copy">© 2026 Garima Kalra · AI Incident Investigator case study</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Hero signal viz ---------- */
+  var svg = document.getElementById("signalSvg");
+  if(svg){
+    var W=400,H=368;
+    var SVGNS="http://www.w3.org/2000/svg";
+    var seed=7;
+    function rnd(){ seed=(seed*9301+49297)%233280; return seed/233280; }
+    var dots=[], N=54;
+    var core=[{x:270,y:150},{x:300,y:180},{x:250,y:200},{x:290,y:120}];
+    for(var i=0;i<N;i++){
+      var x=24+rnd()*(W-48), y=30+rnd()*(H-90);
+      dots.push({x:x,y:y,r:2.4+rnd()*1.6,cls:"noise"});
+    }
+    var sigIdx=[];
+    dots.forEach(function(d,idx){
+      core.forEach(function(c){
+        var dx=d.x-c.x, dy=d.y-c.y;
+        if(Math.sqrt(dx*dx+dy*dy)<52 && sigIdx.indexOf(idx)<0 && sigIdx.length<7){ sigIdx.push(idx); }
+      });
+    });
+    var cx=282, cy=162;
+    sigIdx.forEach(function(idx){
+      var d=dots[idx];
+      var line=document.createElementNS(SVGNS,"line");
+      line.setAttribute("x1",d.x); line.setAttribute("y1",d.y);
+      line.setAttribute("x2",cx); line.setAttribute("y2",cy);
+      line.setAttribute("class","conn");
+      line.style.transition="opacity .5s ease";
+      svg.appendChild(line);
+      d._line=line;
+    });
+    var ring=document.createElementNS(SVGNS,"circle");
+    ring.setAttribute("cx",cx); ring.setAttribute("cy",cy); ring.setAttribute("r",8);
+    ring.setAttribute("class","ring"); ring.setAttribute("stroke-width","1.6");
+    svg.appendChild(ring);
+
+    dots.forEach(function(d,idx){
+      var c=document.createElementNS(SVGNS,"circle");
+      c.setAttribute("cx",d.x); c.setAttribute("cy",d.y); c.setAttribute("r",d.r);
+      var isSig=sigIdx.indexOf(idx)>=0;
+      c.setAttribute("class","dot "+(isSig?"sig":"noise"));
+      c.style.opacity=0;
+      c.style.transition="opacity .5s ease "+(idx*0.012)+"s";
+      svg.appendChild(c);
+      d._c=c; d._sig=isSig;
+    });
+    var coreDot=document.createElementNS(SVGNS,"circle");
+    coreDot.setAttribute("cx",cx); coreDot.setAttribute("cy",cy); coreDot.setAttribute("r",5.5);
+    coreDot.setAttribute("class","dot core"); coreDot.style.opacity=0;
+    coreDot.style.transition="opacity .5s ease";
+    svg.appendChild(coreDot);
+
+    function run(){
+      dots.forEach(function(d){ d._c.style.opacity = d._sig? "1" : "0.32"; });
+      setTimeout(function(){
+        coreDot.style.opacity="1";
+        sigIdx.forEach(function(idx){ if(dots[idx]._line){ dots[idx]._line.style.opacity="0.8"; } });
+        if(!reduce){
+          ring.style.opacity="0.8";
+          var r=8, dir=1;
+          setInterval(function(){
+            r+=dir*0.35; if(r>16){dir=-1;} if(r<8){dir=1;}
+            ring.setAttribute("r",r);
+            ring.style.opacity=(1-(r-8)/9)*0.7;
+          },40);
+        }
+      }, reduce?0:900);
+    }
+    if(reduce){
+      dots.forEach(function(d){ d._c.style.transition="none"; d._c.style.opacity=d._sig?"1":"0.32"; });
+      coreDot.style.opacity="1";
+      sigIdx.forEach(function(idx){ if(dots[idx]._line){ dots[idx]._line.style.opacity="0.8"; } });
+      ring.style.opacity="0.7";
+    } else {
+      setTimeout(run, 200);
+    }
+  }
+
+  /* ---------- Variants spectrum ---------- */
+  var data=[
+    {role:"Variant A", name:"AI Advisor",
+     desc:"Analyzes evidence and suggests possible causes and next steps, but does little on its own. Maximum transparency — the engineer decides what to even investigate.",
+     control:5, autom:1, note:"Too passive. Left the expensive context-gathering on the engineer — it wouldn't move MTTR."},
+    {role:"Variant B — Final", name:"AI Investigator",
+     desc:"Automatically investigates, correlates evidence, explains likely causes and recommends next steps. Observed/inferred labels, evidence and feedback keep the human in control.",
+     control:5, autom:3, note:"The honest middle. Full first-pass investigation, zero consequential actions — automation you can trust."},
+    {role:"Variant C", name:"AI Operator",
+     desc:"Investigates and can initiate approved diagnostic actions against systems. Higher automation, with explicit approval required before anything that could affect production.",
+     control:3, autom:5, note:"Too eager for now. Acting on production invites over-reliance and blast-radius risk this domain can't absorb yet."}
+  ];
+  var detail=document.getElementById("specDetail");
+  var nodes=document.querySelectorAll("#specAxis .spec-node");
+  function meter(label,val,cls){
+    var s='<div class="meter '+(cls||'')+'"><div>'+label+'</div><div class="bar">';
+    for(var i=1;i<=5;i++){ s+='<i class="'+(i<=val?'on':'')+'"></i>'; }
+    return s+'</div></div>';
+  }
+  function render(i){
+    var d=data[i];
+    var chosen=(i===1);
+    detail.innerHTML=
+      '<div class="role">'+d.role+'</div>'+
+      '<h4>'+d.name+'</h4>'+
+      '<p>'+d.desc+'</p>'+
+      '<div class="spec-meters">'+
+        meter("Human control",d.control,'')+
+        meter("Automation",d.autom,'autom')+
+      '</div>'+
+      '<div class="chosen-note '+(chosen?'show':'')+'">'+
+        (chosen?'<b>Chosen direction</b><br>':'')+ d.note +'</div>';
+    nodes.forEach(function(n){ n.setAttribute("data-active", n.getAttribute("data-i")==i ? "true":"false"); });
+  }
+  if(detail && nodes.length){
+    nodes.forEach(function(n){
+      n.addEventListener("click",function(){ render(parseInt(n.getAttribute("data-i"),10)); });
+      n.addEventListener("mouseenter",function(){ render(parseInt(n.getAttribute("data-i"),10)); });
+    });
+    render(1);
+  }
+})();
+</script>
+</body>
+</html>

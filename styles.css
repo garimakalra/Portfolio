@@ -161,3 +161,6 @@ footer .copy{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--c
 .reveal.in{opacity:1;transform:none;}
 a:focus-visible,button:focus-visible{outline:2px solid var(--observed);outline-offset:3px;}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+/* new-tab icon for external links (résumé, linkedin) */
+.ext{width:11px;height:11px;display:inline-block;vertical-align:-1px;margin-left:5px;}

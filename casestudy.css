@@ -100,3 +100,6 @@ em{font-style:italic;}
 .swapnote b{color:var(--observed);}
 
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}.reveal{opacity:1;transform:none;}}
+
+/* consistent gap between the section eyebrow and its headline (matches AI-incident page) */
+.eyebrow{margin-bottom:16px;}

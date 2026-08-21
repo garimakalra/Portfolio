@@ -268,3 +268,6 @@ em{font-style:italic;}
   section{padding:72px 0;}
   body{font-size:18px;}
 }
+
+/* consistent gap between the section eyebrow and its headline (matches AI-incident page) */
+.eyebrow{margin-bottom:16px;}

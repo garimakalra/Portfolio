@@ -248,107 +248,36 @@
       <p class="lead">Rather than a separate tool to context-switch into, the Investigator lives where engineers already are. It does the time-consuming first pass — correlating signals, building the timeline, gathering evidence, proposing likely causes and next steps — and hands the engineer a working hypothesis instead of a blank page.</p>
     </div>
 
-    <div class="product-grid">
-      <!-- annotations -->
-      <div class="annot reveal">
-        <div class="an">
-          <div class="k">↳ AI Summary</div>
-          <div class="v"><b>The entry point.</b> One synthesized paragraph gives immediate context without disrupting the existing workflow — validated in testing as the right place to start.</div>
-        </div>
-        <div class="an">
-          <div class="k">↳ Confidence</div>
-          <div class="v">A visible confidence signal so engineers calibrate how much to trust the result — not a hidden black box.</div>
-        </div>
-        <div class="an">
-          <div class="k">↳ Timeline</div>
-          <div class="v"><b>Observed</b> events (solid teal) are things the system measured. <b>Inferred</b> events (dashed violet) are the AI's reconstruction. The border style tells you which is which at a glance.</div>
-        </div>
-        <div class="an">
-          <div class="k">↳ Evidence</div>
-          <div class="v">The observed facts, collected for you — the panel that replaces the manual scavenger hunt across tools.</div>
-        </div>
-        <div class="an">
-          <div class="k">↳ Likely cause</div>
-          <div class="v">Presented as a <b>hypothesis</b>, dashed and labeled — never as a confirmed root cause. This is the single most important restraint in the design.</div>
-        </div>
-        <div class="an">
-          <div class="k">↳ Next steps + feedback</div>
-          <div class="v">Suggested steps the engineer chooses to take, and a one-tap way to teach the system whether it helped.</div>
-        </div>
-     <!--   <div class="swapnote">// <b>Note:</b> the frame at right is a faithful HTML recreation of the designed interface. Drop your real Figma Make screenshots in to replace it.</div>
-      </div> -->
+    <img class="design-shot reveal" src="fmia-ai-summary.jpg" alt="The AI Summary on a FortiMonitor incident overview — a one-line hypothesis with an 88% confidence signal, sitting above the live ping response-time chart, the timeline, and 30-day availability">
+    <div class="design-cap reveal">The AI Summary sits on the incident overview — a one-line hypothesis with a visible confidence signal, above the live ping data and timeline.</div>
 
-      <!-- device recreation -->
-      <div class="device reveal" role="img" aria-label="Recreation of the AI Investigator panel for a Host Unreachable incident">
-        <div class="device-bar">
-          <span class="tl"><i></i><i></i><i></i></span>
-          <span class="path">fortimonitor.io / incidents / #48213</span>
-        </div>
-        <div class="device-body">
-          <div class="inc-head">
-            <div>
-              <div class="t">Host Unreachable</div>
-              <div class="host">db-prod-03 · us-east-1 · 14:32 UTC</div>
-            </div>
-            <span class="sev">Critical</span>
-          </div>
+    <img class="design-shot reveal" src="fmia-ai-panel.jpg" alt="The full AI Investigation panel opened beside the incident — summary, 88% confidence, a likely cause labeled as a hypothesis, a WHY reasoning breakdown, evidence cards each tagged Critical / High / Info / Resolved with their sources, and recommended next steps">
+    <div class="design-cap reveal">Opening it reveals the full AI Investigation — confidence, the reasoning behind the call, evidence separated into sourced cards, a likely cause labeled as a hypothesis, and next steps the engineer chooses to take.</div>
 
-          <div class="aibox">
-            <div class="aihd">
-              <span class="badge-ai">AI Summary</span>
-              <span class="conf">confidence · <b>Medium</b></span>
-            </div>
-            <p>db-prod-03 stopped responding to health checks at 14:32. Correlated packet loss on the upstream switch suggests a network-path failure rather than a host crash. Two related hosts share the same segment.</p>
-          </div>
-
-          <div class="oi-legend">
-            <span class="obs"><span class="sw"></span>Observed</span>
-            <span class="inf"><span class="sw"></span>Inferred</span>
-          </div>
-
-          <div class="tline">
-            <div class="tl-item">
-              <div class="ts">14:31:58</div>
-              <div class="ev">Packet loss detected on switch sw-core-2 <span class="tag">Observed</span></div>
-            </div>
-            <div class="tl-item">
-              <div class="ts">14:32:04</div>
-              <div class="ev">db-prod-03 missed 3 consecutive pings <span class="tag">Observed</span></div>
-            </div>
-            <div class="tl-item inferred">
-              <div class="ts">~14:32</div>
-              <div class="ev">Likely upstream link degradation on shared segment <span class="tag">Inferred</span></div>
-            </div>
-          </div>
-
-          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--console-muted);margin:16px 0 8px;">Evidence · observed</div>
-          <div class="evgrid">
-            <span class="ev-chip">ping <b>0/5 replies</b></span>
-            <span class="ev-chip">packet loss <b>62%</b></span>
-            <span class="ev-chip">switch <b>sw-core-2</b></span>
-            <span class="ev-chip">segment <b>10.4.2.0/24</b></span>
-          </div>
-
-          <div class="cause">
-            <div class="lbl">Likely cause · hypothesis</div>
-            <p>Upstream connectivity failure on the shared network segment — not a host-level outage. Consistent with 2 similar past incidents on sw-core-2.</p>
-          </div>
-
-          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--console-muted);margin:16px 0 4px;">Recommended next steps</div>
-          <ol class="steps">
-            <li>Check sw-core-2 interface counters and error rates.</li>
-            <li>Verify reachability of the two related hosts on 10.4.2.0/24.</li>
-            <li>Review recent change history on the core switch config.</li>
-          </ol>
-
-          <div class="fb">
-            <span class="q">Was this investigation helpful?</span>
-            <span class="btns">
-              <button type="button">Yes</button>
-              <button type="button">No</button>
-            </span>
-          </div>
-        </div>
+    <div class="annot design-annot reveal">
+      <div class="an">
+        <div class="k">↳ AI Summary</div>
+        <div class="v"><b>The entry point.</b> One synthesized line gives immediate context without disrupting the existing workflow — validated in testing as the right place to start.</div>
+      </div>
+      <div class="an">
+        <div class="k">↳ Confidence</div>
+        <div class="v">A visible confidence signal so engineers calibrate how much to trust the result — not a hidden black box.</div>
+      </div>
+      <div class="an">
+        <div class="k">↳ The "why"</div>
+        <div class="v"><b>Reasoning, made auditable.</b> The signals behind the hypothesis are broken out so the engineer can check <em>how</em> the AI got there, not just accept the answer.</div>
+      </div>
+      <div class="an">
+        <div class="k">↳ Evidence</div>
+        <div class="v">The <b>observed facts</b>, each carrying its own source — the panel that replaces the manual scavenger hunt across tools.</div>
+      </div>
+      <div class="an">
+        <div class="k">↳ Likely cause</div>
+        <div class="v">Presented as a <b>hypothesis</b>, clearly labeled — never as a confirmed root cause. This is the single most important restraint in the design.</div>
+      </div>
+      <div class="an">
+        <div class="k">↳ Next steps + feedback</div>
+        <div class="v">Suggested steps the engineer chooses to take, and a one-tap way to teach the system whether it helped.</div>
       </div>
     </div>
   </div>

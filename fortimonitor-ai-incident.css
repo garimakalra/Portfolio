@@ -27,7 +27,7 @@ section{padding:96px 0;position:relative;border-top:none;}
 .section-head{margin-bottom:44px;}
 .section-head h2{
   font-size:clamp(30px,4.4vw,46px);line-height:1.04;font-weight:800;
-  letter-spacing:-.02em;margin-top:16px;max-width:16ch;
+  letter-spacing:-.02em;margin-top:16px;max-width:30ch;
 }
 p{margin:0 0 22px;color:var(--ink-2);}
 p:last-child{margin-bottom:0;}

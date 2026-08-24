@@ -42,12 +42,14 @@
 
 <!-- ===== 01 context ===== -->
 <section>
-  <div class="wrap read reveal">
+  <div class="wrap reveal">
+    <div class="read">
     <div class="eyebrow-s"><span class="num">01</span> Context</div>
     <h2 class="sec">Every investigation ended up on this one page.</h2>
     <p>In FortiMonitor, an <strong>instance</strong> is a single monitored thing — a firewall, a server, an SD-WAN appliance sitting in a retail store. The instance page is that thing's operational record: how available it's been, what's being monitored on it and how often, every incident it has thrown, its maintenance windows, its audit trail.</p>
     <p>Which meant that whenever something went wrong, this is where people landed. It was among the most-trafficked pages in the product, and the page a network operations engineer would keep open on a second monitor for an entire shift.</p>
     <p>It was also the page that had absorbed four years of feature growth without anyone re-drawing its structure. That's the tension I was asked to resolve: <strong>a page too important to leave alone, and too heavily used to change carelessly.</strong></p>
+    </div>
   </div>
 </section>
 
@@ -84,14 +86,15 @@
 
 <!-- ===== 03 research ===== -->
 <section>
-  <div class="wrap read reveal">
+  <div class="wrap reveal">
+    <div class="read">
     <div class="eyebrow-s"><span class="num">03</span> What users told me</div>
     <h2 class="sec">Clutter, described the way people actually experience it.</h2>
     <p>I ran interviews with operators who used the page daily. Nobody said "the information architecture is wrong." What they described was quieter and more telling:</p>
     <p>The page had <strong>accumulated</strong>. Every release had added something, and each addition was individually reasonable, so nothing had ever been the obvious thing to cut. The result was a screen that had grown denser without anyone deciding it should.</p>
     <p>And they were <strong>re-finding rather than knowing</strong>. Fields people needed weekly still took a hunt — scroll, scan, expand a truncated list, scroll back. That's a findability failure, but the deeper problem is trust: on a page you consult during an outage, hesitation is expensive.</p>
-    <div class="swapnote"><b>▚ SWAP IN:</b> your real research detail — how many operators you spoke to, their roles, and one or two verbatim quotes. A specific quote about hunting for a field would carry this section better than my summary does.</div>
     <p>Those two things pointed at the same fix. Clutter isn't solved by deleting things people rely on — it's solved by giving every piece of the page a named home, so the page can be read in parts instead of all at once.</p>
+    </div>
   </div>
 </section>
 
@@ -274,15 +277,13 @@
 
 <!-- ===== 07 outcomes ===== -->
 <section>
-  <div class="wrap read reveal">
-    <div class="eyebrow-s"><span class="num">07</span> Outcomes</div>
-    <h2 class="sec">Where it landed.</h2>
-    <p>The structural result is visible in the product: the instance page now carries more capability than the old layout could have held, and it absorbed the next wave of fabric features — firewall metrics among them — without another appended section or another row of tabs. The pattern was reused for other detail pages, which is the honest test of whether a structure generalises.</p>
-    <div class="swapnote"><b>▚ SWAP IN:</b> your real numbers — switch-back rate over the transition, time-on-task or findability results from testing, adoption before the old page was retired, or support-ticket volume for this page. Two or three concrete figures here would do more for this case study than any other single edit. Drop them into the metric cards below and delete this note.</div>
-    <div class="metrics">
-      <div class="metric"><div class="big">—</div><div class="lbl">Switch-back rate by the end of phase 02</div></div>
-      <div class="metric"><div class="big">— <span class="from">from —</span></div><div class="lbl">Findability / task success in testing</div></div>
-      <div class="metric"><div class="big">—</div><div class="lbl">Adoption at the point the old page was retired</div></div>
+  <div class="wrap reveal">
+    <div class="read">
+    <div class="eyebrow-s"><span class="num">07</span> What shipped</div>
+    <h2 class="sec">The structure held — and the next feature proved it.</h2>
+    <p>The clearest result is visible in the product itself. Compare the two Performance screens above: the redesigned page carries a <strong>Firewall Metrics</strong> tab that has no equivalent in the old layout. That capability arrived after the restructure and simply landed in place — no new appended section, no third navigation system, no negotiation about where it could possibly go. Under the old tab row it would have had nowhere to sit but further down the scroll.</p>
+    <p>That's the outcome the redesign was actually for. A structure earns its keep when the <em>next</em> thing fits without an argument, and this one did. The same pattern — a persistent secondary nav with two levels and contextual actions in the header — was carried to the Applications and OnSights detail pages, and to appliance types like Collectors, which is the honest test of whether a structure generalises or just fits the page it was drawn for.</p>
+    <p>The migration was designed to be measured rather than declared. Switch-back rate over time, and which section a person was on when they reverted, were the signals that governed both when the default flipped and when the old page could be removed. Retirement was conditional on those numbers settling — not on a date in a release plan.</p>
     </div>
   </div>
 </section>

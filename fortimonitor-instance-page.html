@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FortiMonitor — Instance Page Migration · Garima Kalra</title>
+<meta name="description" content="Redesigning FortiMonitor's most-used page around a persistent secondary navigation — and migrating users to it without a forced cutover. A product design case study by Garima Kalra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="fortimonitor-instance-page.css">
+</head>
+<body>
+
+<!-- ===== shared nav ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>GARIMA KALRA</a>
+    <nav>
+      <a href="index.html#work">Work</a>
+      <a href="about.html">About</a>
+      <a href="Garima_Kalra_Resume.pdf" target="_blank" rel="noopener">Resume<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+    </nav>
+  </div>
+</div>
+
+<!-- ===== hero ===== -->
+<header class="hero case">
+  <div class="wrap">
+    <div class="eyebrow">FortiMonitor · Fortinet</div>
+    <h1>Rebuilding the page operators lived on — without breaking their muscle memory.</h1>
+    <p class="lede">The instance page was FortiMonitor's most-visited screen and its least scalable one. I restructured it around a persistent secondary navigation, then shipped it as a switchable migration so nobody lost a workflow mid-incident.</p>
+    <div class="facts">
+      <div class="fact"><div class="k">Role</div><div class="v">Senior UX/UI Designer</div></div>
+      <div class="fact"><div class="k">Timeline</div><div class="v">2024</div></div>
+      <div class="fact"><div class="k">Scope</div><div class="v">IA · Interaction · Migration strategy</div></div>
+      <div class="fact"><div class="k">Company</div><div class="v">Fortinet</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 01 context ===== -->
+<section>
+  <div class="wrap read reveal">
+    <div class="eyebrow-s"><span class="num">01</span> Context</div>
+    <h2 class="sec">Every investigation ended up on this one page.</h2>
+    <p>In FortiMonitor, an <strong>instance</strong> is a single monitored thing — a firewall, a server, an SD-WAN appliance sitting in a retail store. The instance page is that thing's operational record: how available it's been, what's being monitored on it and how often, every incident it has thrown, its maintenance windows, its audit trail.</p>
+    <p>Which meant that whenever something went wrong, this is where people landed. It was among the most-trafficked pages in the product, and the page a network operations engineer would keep open on a second monitor for an entire shift.</p>
+    <p>It was also the page that had absorbed four years of feature growth without anyone re-drawing its structure. That's the tension I was asked to resolve: <strong>a page too important to leave alone, and too heavily used to change carelessly.</strong></p>
+  </div>
+</section>
+
+<!-- ===== 02 the problem ===== -->
+<section>
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow-s"><span class="num">02</span> The problem</div>
+      <h2 class="sec">The layout had run out of room, and it showed.</h2>
+      <p>The page organised itself with a single horizontal tab row. Six tabs — Details, Incidents, Monitoring Config, Custom Incident Config, Maintenance, Activity — laid flat, with no capacity for a seventh and no way to express that some of them belonged together.</p>
+      <p>The clearest evidence wasn't in a research finding. It was sitting in the layout itself:</p>
+    </div>
+
+    <div class="fig">
+      <img src="before-instance-page-full.png" alt="The original FortiMonitor instance page, captured full-length: an incident banner, a full-width band of three availability percentages, the instance header, a horizontal row of six tabs, a dense grid of device attributes, and then an entirely separate Performance section with its own second row of tabs further down the page.">
+      <div class="cap"><span class="tag before">Before</span><span>The full-length instance page. Details and Performance are stacked on a single scroll, each with its own tab row — two competing navigation systems on one screen.</span></div>
+    </div>
+
+    <div class="read">
+      <ul class="annot">
+        <li><span class="m">01</span><p><b>A second tab row had appeared below the fold</b>Performance couldn't fit in the primary tabs, so it was appended as a section further down the page — with its own tabs for Device Metrics, Network Ports and SD-WAN Health. Two navigation systems, one page, no relationship between them.</p></li>
+        <li><span class="m">02</span><p><b>The most valuable screen space held the least information</b>A full horizontal band was spent on three availability percentages. Below it, an incident banner. Below that, the header. Real content started well past the fold.</p></li>
+        <li><span class="m">03</span><p><b>Details had become an undifferentiated grid</b>Fifteen-plus attribute pairs in three columns, sorted by nothing in particular, with "+17 more…" and "+8 more…" quietly hiding the rest. Nothing on screen told you what kind of thing you were looking at.</p></li>
+        <li><span class="m">04</span><p><b>You couldn't tell where you were</b>The active tab was the only location cue, and it disappeared the moment you scrolled. On a page this long, people lost their place constantly.</p></li>
+      </ul>
+    </div>
+
+    <div class="read">
+      <p class="pull">A second row of tabs isn't a design decision. It's what happens when the first row <span class="tealw">runs out</span>.</p>
+      <p>Roadmap made this urgent rather than merely untidy. Fabric-wide capabilities — firewall metrics, SD-WAN health, deeper flow data — were queued up, and every one of them needed somewhere to live on this page. The next feature wouldn't have degraded the layout. It would have had nowhere to go at all.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 research ===== -->
+<section>
+  <div class="wrap read reveal">
+    <div class="eyebrow-s"><span class="num">03</span> What users told me</div>
+    <h2 class="sec">Clutter, described the way people actually experience it.</h2>
+    <p>I ran interviews with operators who used the page daily. Nobody said "the information architecture is wrong." What they described was quieter and more telling:</p>
+    <p>The page had <strong>accumulated</strong>. Every release had added something, and each addition was individually reasonable, so nothing had ever been the obvious thing to cut. The result was a screen that had grown denser without anyone deciding it should.</p>
+    <p>And they were <strong>re-finding rather than knowing</strong>. Fields people needed weekly still took a hunt — scroll, scan, expand a truncated list, scroll back. That's a findability failure, but the deeper problem is trust: on a page you consult during an outage, hesitation is expensive.</p>
+    <div class="swapnote"><b>▚ SWAP IN:</b> your real research detail — how many operators you spoke to, their roles, and one or two verbatim quotes. A specific quote about hunting for a field would carry this section better than my summary does.</div>
+    <p>Those two things pointed at the same fix. Clutter isn't solved by deleting things people rely on — it's solved by giving every piece of the page a named home, so the page can be read in parts instead of all at once.</p>
+  </div>
+</section>
+
+<!-- ===== 04 the redesign ===== -->
+<section>
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow-s"><span class="num">04</span> The redesign</div>
+      <h2 class="sec">A persistent left navigation, and a structure that can absorb the next feature.</h2>
+      <p>The core move was replacing the horizontal tab row with a secondary navigation that sits down the left side of the page and stays there. It's a small-looking change that resolves several problems at once.</p>
+    </div>
+
+    <div class="wall">
+      <div class="panel old">
+        <div class="phead"><span>Before · horizontal tabs</span><span class="st">at capacity</span></div>
+        <div class="tabrow">
+          <span class="on">Details</span><span>Incidents</span><span>Monitoring Config</span><span>Custom Incident Config</span><span>Maintenance</span><span class="cut">Activity</span><span class="fade"></span>
+        </div>
+        <div class="tabrow2">
+          <div class="lbl">↳ appended below the fold</div>
+          <div class="tabrow">
+            <span class="on">Device Metrics</span><span>Network Ports</span><span>SD-WAN Health</span>
+          </div>
+        </div>
+        <div class="note">One flat level. No parent–child relationship, no active state once you scroll, and a seventh destination has nowhere to go but down the page.</div>
+      </div>
+
+      <div class="panel new">
+        <div class="phead"><span>After · persistent secondary nav</span><span class="st">room to grow</span></div>
+        <div class="navtree">
+          <div>Details</div>
+          <div>Monitoring</div>
+          <div class="child">Config</div>
+          <div class="child on">Performance</div>
+          <div>Incidents</div>
+          <div class="child">Recent</div>
+          <div class="child">Custom Config</div>
+          <div>Maintenance</div>
+          <div>Activity</div>
+          <div class="slot">+ next capability lands here</div>
+        </div>
+        <div class="note">Two levels, always visible, always showing the current location. Growth adds a child under an existing parent instead of competing for horizontal space.</div>
+      </div>
+    </div>
+
+    <div class="read">
+      <div class="dec">
+        <div class="n">01</div>
+        <div>
+          <h3>Make location permanent</h3>
+          <p>The nav stays fixed while content scrolls, with the active item held in a persistent selected state. "Where am I" stopped being a question people had to re-answer after every scroll — and going back to a sibling section became a single click instead of a scroll-and-hunt.</p>
+        </div>
+      </div>
+      <div class="dec">
+        <div class="n">02</div>
+        <div>
+          <h3>Give the orphaned second tab row a real home</h3>
+          <p>Performance stopped being a section appended to Details and became a destination in its own right, nested under Monitoring alongside Config. That let it keep its own tabs legitimately — and the room paid off immediately: Firewall Metrics landed as a fourth tab rather than as another stack on the page.</p>
+        </div>
+      </div>
+      <div class="dec">
+        <div class="n">03</div>
+        <div>
+          <h3>Group details by what they describe</h3>
+          <p>The flat attribute grid became labelled groups — General Info, Device Info, Timelines, Locations, Organizations. Same data, but now a person scanning for the OS version knows to look under Device Info instead of reading the whole page. Labels do the finding.</p>
+        </div>
+      </div>
+      <div class="dec">
+        <div class="n">04</div>
+        <div>
+          <h3>Move actions to where the task is, and give the fold back</h3>
+          <p>Global buttons became contextual: Add Monitoring appears on Config, Incident Simulator and Create Manual Incident on Incidents. The three-percentage availability band collapsed into a single line under the instance name — the same numbers, a fraction of the height, and content starting above the fold.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 before / after ===== -->
+<section>
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow-s"><span class="num">05</span> Before &amp; after</div>
+      <h2 class="sec">The same four destinations, restructured.</h2>
+      <p>Each pair below shows the same task on the old page and the new one.</p>
+    </div>
+
+    <div class="fig-pair">
+      <div class="fig">
+        <img src="before-monitoring-config.png" alt="Old FortiMonitor monitoring config tab: horizontal tabs across the top, availability band above, metric list below.">
+        <div class="cap"><span class="tag before">Before</span><span>Monitoring config, reached by a top tab.</span></div>
+      </div>
+      <div class="fig">
+        <img src="after-monitoring-config.png" alt="New FortiMonitor monitoring config: a persistent left navigation with Config selected under Monitoring, a compact header, and the metric list occupying the full content area.">
+        <div class="cap"><span class="tag after">After</span><span>Config, nested under Monitoring and held in the nav.</span></div>
+      </div>
+    </div>
+
+    <div class="fig-pair">
+      <div class="fig">
+        <img src="before-performance.png" alt="Old FortiMonitor performance section: charts appearing below the details content on the same scrolling page, under a second tab row.">
+        <div class="cap"><span class="tag before">Before</span><span>Performance, appended below Details on one long scroll.</span></div>
+      </div>
+      <div class="fig">
+        <img src="after-performance.png" alt="New FortiMonitor performance page: a destination of its own with Device Metrics, Network Ports, Firewall Metrics and SD-WAN Health tabs and a grid of charts.">
+        <div class="cap"><span class="tag after">After</span><span>Performance as a destination — with room for a fourth tab.</span></div>
+      </div>
+    </div>
+
+    <div class="fig-pair">
+      <div class="fig">
+        <img src="before-incidents.png" alt="Old FortiMonitor incidents tab showing the recent incidents table beneath the availability band and header.">
+        <div class="cap"><span class="tag before">Before</span><span>Incidents, one flat tab among six.</span></div>
+      </div>
+      <div class="fig">
+        <img src="after-incidents.png" alt="New FortiMonitor incidents page with Recent and Custom Config as children of Incidents in the left navigation, and contextual Incident Simulator and Create Manual Incident actions in the header.">
+        <div class="cap"><span class="tag after">After</span><span>Incidents with children, and actions in context.</span></div>
+      </div>
+    </div>
+
+    <div class="fig">
+      <img src="after-details.png" alt="New FortiMonitor details page: the persistent left navigation with Details selected, a compact header line with 24-hour, 7-day and 30-day availability, and the device attributes organised under General Info, Device Info, Timelines and Locations headings.">
+      <div class="cap"><span class="tag after">After</span><span>Details, regrouped under named sections — and the availability band reduced to a single line under the instance name.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 the migration ===== -->
+<section>
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow-s"><span class="num">06</span> The migration</div>
+      <h2 class="sec">A better page you can't use yet is worse than the page you know.</h2>
+      <p>The redesign was the easier half. The harder question was how to land it on people who used this page every day, often under pressure.</p>
+      <p>A forced cutover would have been defensible on paper — the new structure is better by every measure we cared about. But <strong>"better" and "faster for you, today" are not the same claim.</strong> Someone who has spent two years learning where things are on this page is temporarily slower on any new one, and this is a page people open when something is already broken. Taxing them at exactly that moment is a real cost, not an adjustment period to be waved through.</p>
+      <p>So I proposed we run both. Users could switch back to the old page whenever the new one slowed them down, and we'd retire the old one gradually, based on what people actually did.</p>
+    </div>
+
+    <div class="switchui">
+      <div class="txt"><b>Use the previous instance page</b><span>Available from the instance menu for the whole transition — no ticket, no admin, no explanation required.</span></div>
+      <div class="ctl"><span>New page</span><span class="track"><i></i></span></div>
+    </div>
+
+    <div class="read">
+      <p>The part I'd argue for hardest: the switch-back wasn't a safety net bolted on to reduce complaints. It was <strong>the measurement instrument</strong>. A support ticket tells you someone was angry enough to write in; a switch-back tells you the exact page, at the exact moment, where the new design cost someone time. That's a far better signal, and it arrives from the people least likely to file feedback.</p>
+    </div>
+
+    <div class="plan">
+      <div class="ph">
+        <div class="no">Phase 01</div>
+        <div>
+          <h4>Opt in, old page default</h4>
+          <p>The new page available to anyone who wanted it, with the old one still the default. Early adopters absorbed the rough edges while the stakes were low.</p>
+        </div>
+        <div class="sig"><b>What we watched</b>Who opted in, what they went looking for first, and where they got stuck.</div>
+      </div>
+      <div class="ph">
+        <div class="no">Phase 02</div>
+        <div>
+          <h4>New page default, switch-back available</h4>
+          <p>The default flipped once the obvious gaps were closed. Anyone could go back in one click, and going back was treated as information rather than as failure.</p>
+        </div>
+        <div class="sig"><b>What we watched</b>Switch-back rate over time, and which sections people were on when they switched.</div>
+      </div>
+      <div class="ph">
+        <div class="no">Phase 03</div>
+        <div>
+          <h4>Retire the old page</h4>
+          <p>Removal earned rather than scheduled: once switch-backs had flattened and the remaining reasons were understood and addressed, the old page came out.</p>
+        </div>
+        <div class="sig"><b>What we watched</b>Whether the remaining hold-outs shared a workflow the new page genuinely didn't serve.</div>
+      </div>
+    </div>
+
+    <div class="read">
+      <p class="pull">Going back wasn't a failure to manage. It was <span class="violw">the clearest feedback we got</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 outcomes ===== -->
+<section>
+  <div class="wrap read reveal">
+    <div class="eyebrow-s"><span class="num">07</span> Outcomes</div>
+    <h2 class="sec">Where it landed.</h2>
+    <p>The structural result is visible in the product: the instance page now carries more capability than the old layout could have held, and it absorbed the next wave of fabric features — firewall metrics among them — without another appended section or another row of tabs. The pattern was reused for other detail pages, which is the honest test of whether a structure generalises.</p>
+    <div class="swapnote"><b>▚ SWAP IN:</b> your real numbers — switch-back rate over the transition, time-on-task or findability results from testing, adoption before the old page was retired, or support-ticket volume for this page. Two or three concrete figures here would do more for this case study than any other single edit. Drop them into the metric cards below and delete this note.</div>
+    <div class="metrics">
+      <div class="metric"><div class="big">—</div><div class="lbl">Switch-back rate by the end of phase 02</div></div>
+      <div class="metric"><div class="big">— <span class="from">from —</span></div><div class="lbl">Findability / task success in testing</div></div>
+      <div class="metric"><div class="big">—</div><div class="lbl">Adoption at the point the old page was retired</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 08 reflections ===== -->
+<section>
+  <div class="wrap reveal">
+    <div class="read">
+      <div class="eyebrow-s"><span class="num">08</span> What I took from it</div>
+      <h2 class="sec">Four things I'd carry into the next migration.</h2>
+    </div>
+    <div class="rgrid">
+      <div class="rcard reveal">
+        <h4><span class="mk">01</span> Scalability is a property of navigation, not layout</h4>
+        <p>Horizontal tabs are a fixed-capacity container pretending to be a flexible one. The moment a product's roadmap outruns the width of the screen, the layout starts making product decisions on your behalf — usually by shoving the newest thing below the fold.</p>
+      </div>
+      <div class="rcard reveal">
+        <h4><span class="mk">02</span> Clutter is a decision history, not a styling problem</h4>
+        <p>Every item on that page got there for a reason someone could still defend. Reading the page as an accumulation of individually-sound choices told me the fix was structural — give things named homes — rather than a matter of deleting what looked excessive.</p>
+      </div>
+      <div class="rcard reveal">
+        <h4><span class="mk">03</span> Design the exit, not just the entrance</h4>
+        <p>Most redesign plans specify the new experience in detail and the transition in a sentence. On a daily-use operational page, the transition is where the risk actually lives, and it deserves the same design attention as the screens.</p>
+      </div>
+      <div class="rcard reveal">
+        <h4><span class="mk">04</span> Let the old road stay open a little longer than feels necessary</h4>
+        <p>Keeping the legacy page cost engineering time and slowed the cutover. It bought something worth more: users who trusted the change because they were never trapped by it — and a stream of honest signal about what still didn't work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== shared footer ===== -->
+<footer>
+  <div class="wrap">
+    <h3>Next case study</h3>
+    <p class="ft-sub"><a class="link-b" href="ascendon.html">Ascendon — CSG →</a></p>
+    <div class="row" style="margin-top:30px;">
+      <a class="link-b" href="index.html#work">← All work</a>
+      <a class="link-b" href="mailto:hello@garimakalra.com">hello@garimakalra.com</a>
+      <a class="link-b" href="https://www.linkedin.com/in/kalragarima/" target="_blank" rel="noopener">LinkedIn<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+    </div>
+    <p class="copy">© 2026 Garima Kalra · Instance page migration case study</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

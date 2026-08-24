@@ -20,7 +20,7 @@
     <nav>
       <a href="index.html#work">Work</a>
       <a href="about.html">About</a>
-      <a href="Garima_Kalra_Resume.pdf" target="_blank" rel="noopener">Résumé<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      <a href="Garima_Kalra_Resume.pdf" target="_blank" rel="noopener">Resume<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
     </nav>
   </div>
 </div>
@@ -65,7 +65,7 @@
       <p>An AI Investigator embedded in the incident page that synthesizes a summary, timeline, evidence and next steps — with facts and AI hypotheses visibly separated.</p>
     </div>
     <div class="tldr-col">
-      <h4>The staff-level bet</h4>
+      <h4>The bet</h4>
       <p>Chose <strong>calibrated assistance over automation</strong>. The AI investigates; the human decides. Trust is the feature, not the risk.</p>
     </div>
   </div>
@@ -93,13 +93,16 @@
       </div>
       <div class="stat">
         <div class="n">10k<span class="u">s</span></div>
-        <div class="k">of monitored devices per<br>large customer (TJX, CSX)</div>
+        <div class="k">of monitored devices per<br>large enterprise customer</div>
       </div>
       <div class="stat">
         <div class="n">"Whack<span class="u">-a-mole"</span></div>
         <div class="k">round-robin firefighting where<br>root causes go unaddressed</div>
       </div>
     </div>
+
+    <img class="shot reveal" src="fmia-incident-volume.jpg" alt="A FortiMonitor Network Infrastructure dashboard for a single enterprise customer showing 364 active incidents, 3 resolved, and 6,764 monitored devices, with an Incidents navigation badge of 384">
+    <div class="caption reveal">A single enterprise customer's live dashboard — <strong>364 active incidents</strong> across <strong>6,764 monitored devices</strong>. This is the volume a human is expected to triage.</div>
   </div>
 </section>
 
@@ -201,6 +204,12 @@
         <p>A polished, interactive interface. Attention shifted to <strong>information hierarchy and interaction</strong> — panel size, section order, timeline presentation, confidence indicators, and how clearly AI output was distinguished from raw telemetry. The concept was assumed; adoption details surfaced.</p>
       </div>
     </div>
+
+    <img class="shot reveal" src="fmia-lofi.jpg" alt="Lo-fi prototype — two incident-page mockups with the AI Investigator panel spec'd out in plain content blocks: overview, confidence, business impact, an evidence checklist, and related incidents">
+    <div class="caption reveal">Lo-fi — the panel's content and order, spec'd in plain blocks and tested before any visual polish.</div>
+
+    <img class="shot reveal" src="fmia-hifi.jpg" alt="Hi-fi prototype — the polished incident page with the AI Investigation panel open beside it: AI summary, 88% confidence, sourced evidence cards tagged Critical / High / Info / Resolved, and recommended next steps">
+    <div class="caption reveal">Hi-fi — the polished, interactive version taken into the second round of testing.</div>
 
     <div class="read reveal">
       <p style="margin-top:34px;">The two fidelities weren't redundant — they answered different questions. The lo-fi validated <em>whether the problem was worth solving</em> before I invested in craft; the hi-fi exposed the <em>presentation and trust details</em> that would decide adoption. That's the whole argument for prototyping at two fidelities, and I got to see it play out cleanly.</p>

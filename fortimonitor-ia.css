@@ -24,7 +24,7 @@ section{padding:96px 0;position:relative;border-top:none;}
 .section-head{margin-bottom:44px;}
 .section-head h2{
   font-size:clamp(30px,4.4vw,46px);line-height:1.04;font-weight:800;
-  letter-spacing:-.02em;margin-top:16px;max-width:30ch;
+  letter-spacing:-.02em;margin-top:16px;max-width:18ch;
 }
 p{margin:0 0 22px;color:var(--ink-2);}
 p:last-child{margin-bottom:0;}
@@ -272,4 +272,3 @@ em{font-style:italic;}
 /* consistent gap between the section eyebrow and its headline (matches AI-incident page) */
 .eyebrow{margin-bottom:16px;}
 
-h2.section-head{font-size:clamp(30px,4.4vw,46px);line-height:1.04;font-weight:800;letter-spacing:-.02em;max-width:30ch;}

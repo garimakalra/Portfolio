@@ -109,7 +109,17 @@
     <p class="lead">FortiMonitor — formerly Panopta — is Fortinet's cloud-based infrastructure and network monitoring platform. It unifies visibility across servers, networks, containers, and applications so enterprises catch performance issues before customers feel them.</p>
     <p>After Fortinet acquired Panopta, a Chicago-based monitoring startup, the product needed to evolve from a niche solution into a platform that could integrate seamlessly with the broader Fortinet ecosystem — and grow with an enterprise customer base instead of buckling under it.</p>
     <p>The people who live in this product are <strong>NOC teams, DevOps engineers, and IT operations teams</strong>, often working high-pressure on-call rotations where a slow path to the right signal directly delays incident response. They care about one thing above all: getting from <em>"something's wrong"</em> to <em>"here's what and where"</em> in seconds.</p>
+
+    <h3 class="subhead" style="margin-top:40px;">Where users got stuck</h3>
+    <p>Navigation lived entirely in a <strong>top menu bar</strong>. Every item opened a long dropdown — and the deeper into the hierarchy you went, the less the nav told you about where you actually were. Five overlapping top-level menus had grown dense and inconsistent, and findability was the product's #1 complaint.</p>
     </div>
+
+    <img class="shot" src="fmia-oldnav-settings.jpg" alt="The old FortiMonitor top navigation with the Settings menu open — a 13-item dropdown: Users Groups & On-Call, Integrations, Perfmon Metrics, API, SNMP Credentials, Access Control, Cloud Settings, Fabric Settings, VMware Settings, Countermeasures, Tags, Attributes, Custom Metrics">
+    <div class="caption">Settings alone had swollen into a 13-item junk drawer</div>
+    <img class="shot" src="fmia-oldnav-monitoring.jpg" alt="The old top navigation with the Monitoring menu open — Infrastructure Map, Topology, All Instances, Monitoring Policies, Application Monitoring, OnSight Management, Alert Timelines, Maintenance Schedules">
+    <div class="caption">Monitoring buried views, configuration, and maintenance under one menu</div>
+    <img class="shot" src="fmia-oldnav-dashboards.jpg" alt="The old top navigation with the Dashboards menu open, listing every dashboard in one long scrolling list">
+    <div class="caption">Every top-level menu opened a long list — findability degraded as the product grew</div>
   </div>
 </section>
 
@@ -271,44 +281,14 @@
     <div class="read">
       <div class="eyebrow"><span class="num">05</span> The new information architecture</div>
       <h2 class="section-head">Six task-based destinations, each holding the settings it governs.</h2>
-      <p>The research gave a clear mandate: users navigate by <strong>what they're trying to do</strong>, not by how the system is built. They separated <em>looking at</em> their infrastructure from <em>setting up</em> monitoring from <em>responding to</em> incidents — and the old IA violated all three by scattering related tasks across unrelated menus. The worst offender was a global Settings menu that had grown into a 13-item junk drawer.</p>
+      <p>The research gave a clear mandate: users navigate by <strong>what they're trying to do</strong>, not by how the system is built. They separated <em>looking at</em> their infrastructure from <em>setting up</em> monitoring from <em>responding to</em> incidents — and the old IA violated all three by scattering related tasks across unrelated menus. So I rebuilt the top level around those modes.</p>
     </div>
 
-    <div class="read">
-      <p>Navigation lived entirely in a <strong>top menu bar</strong>. Every item opened a long dropdown — and the deeper into the hierarchy you went, the less the nav told you about where you actually were.</p>
+    <div class="transform reveal">
+      <span class="t-old">5 overlapping menus</span>
+      <span class="t-arrow">&#8594;</span>
+      <span class="t-new">6 task-based destinations</span>
     </div>
-
-    <img class="shot" src="fmia-oldnav-settings.jpg" alt="The old FortiMonitor top navigation with the Settings menu open — a 13-item dropdown: Users Groups & On-Call, Integrations, Perfmon Metrics, API, SNMP Credentials, Access Control, Cloud Settings, Fabric Settings, VMware Settings, Countermeasures, Tags, Attributes, Custom Metrics">
-    <div class="caption">Settings alone had swollen into a 13-item junk drawer</div>
-    <img class="shot" src="fmia-oldnav-monitoring.jpg" alt="The old top navigation with the Monitoring menu open — Infrastructure Map, Topology, All Instances, Monitoring Policies, Application Monitoring, OnSight Management, Alert Timelines, Maintenance Schedules">
-    <div class="caption">Monitoring buried views, configuration, and maintenance under one menu</div>
-    <img class="shot" src="fmia-oldnav-dashboards.jpg" alt="The old top navigation with the Dashboards menu open, listing every dashboard in one long scrolling list">
-    <div class="caption">Every top-level menu opened a long list — findability degraded as the product grew</div>
-
-    <div class="ba reveal">
-      <div class="navcard old">
-        <div class="nh">Before · Top-level nav <span class="cnt">5 menus</span></div>
-        <ul class="navlist">
-          <li>Dashboards<span class="prob">user dashboards only — views elsewhere</span></li>
-          <li>Monitoring<span class="prob">overloaded — views, config, maintenance buried</span></li>
-          <li>Incidents<span class="prob">response tools stranded in Settings</span></li>
-          <li>Settings<span class="prob">13-item junk drawer</span></li>
-          <li>Reporting<span class="prob">largely unchanged</span></li>
-        </ul>
-      </div>
-      <div class="navcard new">
-        <div class="nh">After · Task-based nav <span class="cnt">6 destinations</span></div>
-        <ul class="navlist">
-          <li><span class="ico">◆</span>Dashboards<span class="desc">see your environment</span></li>
-          <li><span class="ico">◆</span>Monitoring<span class="desc">objects + their setup</span></li>
-          <li><span class="ico">◆</span>Incidents<span class="desc">detect &amp; resolve</span></li>
-          <li><span class="ico">◆</span>Maintenance<span class="desc">plan around downtime</span></li>
-          <li><span class="ico">◆</span>Reporting<span class="desc">generate &amp; share</span></li>
-          <li><span class="ico">◆</span>Teams &amp; Activity<span class="desc">people &amp; access</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="caption">Old vs. new top-level navigation</div>
 
     <div class="read" style="margin-top:48px;">
       <h3 class="subhead">Five structural decisions</h3>

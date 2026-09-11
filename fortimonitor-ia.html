@@ -229,74 +229,38 @@
     <div class="read">
       <div class="eyebrow"><span class="num">05</span> The core move</div>
       <h2 class="section-head">Interpreting the card sort — not transcribing it.</h2>
-      <p class="lead">The card sort didn't hand me a menu. Its most important read wasn't the clusters themselves — it was their <em>coarseness</em>.</p>
-      <p>Five broad affinity clusters emerged — but they were coarse. In two places the sort simply <em>reproduced</em> the confusion I was trying to fix: users lumped everything configurable into one pile, exactly as the old Settings menu had trained them, and they merged planned maintenance with unplanned incidents. In a third, they grouped things that only looked alike — live views and shareable outputs — that actually serve different intents. Research told me how users <span class="obs">currently think</span>; my job was to decide where to <span class="obs">honor</span> that thinking and where the grouping was too coarse to build on.</p>
+      <p class="lead">The card sort didn't hand me a menu. It showed how users currently group things — and the real work was reading which of those groupings were genuine mental models, and which just echoed the structure I was trying to fix.</p>
+      <p>Some groupings reflected how people actually work, and I kept them. Others only reproduced the old product's habits — things lumped together because that's where the interface had always put them. Research told me how users <span class="obs">currently think</span>; my job was to decide where to <span class="obs">honor</span> that thinking and where to <span class="des">regroup</span> around what people are trying to do.</p>
     </div>
   </div>
 
-  <div class="wrap reveal" style="margin-top:16px;">
-    <div class="console-block">
-      <div class="cb-bar">
-        <span class="tl"><i></i><i></i><i></i></span>
-        <span>card_sort_analysis · similarity_matrix → structure</span>
-        <span class="cb-legend">
-          <span class="o"><i></i>observed</span>
-          <span class="d"><i></i>designed</span>
-        </span>
-      </div>
-      <div class="cb-grid">
-        <div class="cb-col obs">
-          <h5>What users grouped</h5>
-          <div class="sub">Five affinity clusters from the sort</div>
-          <ul class="clist">
-            <li><b>Monitored objects</b><span class="tag">EBS · EC2 · VMware · AD · Apache — the things they watch</span></li>
-            <li><b>"Everything configurable" blob</b><span class="tag">access, users, credentials, API, integrations, policies, tags, metrics, countermeasures</span></li>
-            <li><b>Operational events</b><span class="tag">active incidents · alert timelines · both maintenance items</span></li>
-            <li><b>Views &amp; outputs</b><span class="tag">dashboards · infra map · reports · status pages</span></li>
-            <li><b>Account &amp; utility</b><span class="tag">my account · history · support · updates · logout</span></li>
-          </ul>
-        </div>
-        <div class="cb-col mid"><span class="cb-arrow">→</span></div>
-        <div class="cb-col des">
-          <h5>Where I placed it</h5>
-          <div class="sub">Split by what each item governs</div>
-          <ul class="clist">
-            <li><b>Monitoring</b><span class="tag">monitored objects + the controls that shape them (tags, metrics, policies)</span></li>
-            <li><b>Incidents</b><span class="tag">absorbed countermeasures + alert timelines</span></li>
-            <li><b>Maintenance</b><span class="tag">promoted out of the events pile — planned, not unplanned</span></li>
-            <li><b>Dashboards</b><span class="tag">live views — infra map, topology, netflow, personal dashboards</span></li>
-            <li><b>Reporting</b><span class="tag">split out from the same pile — things you produce &amp; share</span></li>
-            <li><b>Teams &amp; Activity</b><span class="tag">what genuinely remained: people, access, usage</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <figure style="max-width:560px;margin:28px auto 0;">
-      <img class="shot" style="margin:0;" src="fmia-similarity-matrix.jpg" alt="Card-sort similarity matrix showing affinity clusters among navigation items">
-      <div class="caption">Card-sort similarity matrix</div>
+  <div class="wrap reveal" style="margin-top:12px;">
+    <figure style="max-width:640px;margin:0 auto;">
+      <img class="shot" style="margin:0;" src="fmia-similarity-matrix.jpg" alt="Card-sort similarity matrix showing affinity groupings among navigation items">
+      <div class="caption">The card-sort similarity matrix — read for its groupings, not transcribed into a menu</div>
     </figure>
   </div>
 
   <div class="wrap reveal">
     <div class="read" style="margin-top:44px;">
-      <h3 class="subhead">Three interpretation moves</h3>
-      <p>Most clusters I <span class="obs">honored</span> — monitored objects became Monitoring, account and utility became Teams &amp; Activity. These three are where the grouping was too coarse to build on, so I <span class="des">overrode</span> it and split it apart:</p>
+      <h3 class="subhead">Where I regrouped</h3>
+      <p>The flip side of honoring the real groupings was regrouping the ones that came from habit or surface similarity. Three places I did that:</p>
     </div>
     <div class="moves">
       <div class="move reveal">
-        <div class="mh"><span class="mtag split">override</span></div>
-        <h4>Split the "everything configurable" blob</h4>
-        <p>Tighter sub-groups showed users <em>could</em> separate account, monitoring config, and incident tooling once context was clear — they only piled them together because the product gave them nowhere else to go. Each moved next to what it governs.</p>
+        <div class="mh"><span class="mtag split">regroup</span></div>
+        <h4>Configuration, filed by what it governs</h4>
+        <p>The old product had trained people to treat everything configurable as one pile — because that's how the Settings menu presented it. I moved each setting next to the thing it governs, so configuration lives with the work it supports rather than in a single drawer.</p>
       </div>
       <div class="move reveal">
-        <div class="mh"><span class="mtag split">override</span></div>
-        <h4>Separate Maintenance from Incidents</h4>
-        <p>They clustered together because both live on a timeline — but maintenance is <em>planned</em> and incidents are <em>unplanned</em>: a different mental mode and urgency. Burying planned downtime inside incident response was part of the original problem.</p>
+        <div class="mh"><span class="mtag split">regroup</span></div>
+        <h4>Planned maintenance, separate from incidents</h4>
+        <p>Maintenance and incidents both live on a timeline, so they read as similar — but one is <em>planned</em> and one is <em>unplanned</em>, a different mode and urgency. I pulled planned maintenance out of incident response and gave it its own home.</p>
       </div>
       <div class="move reveal">
-        <div class="mh"><span class="mtag split">override</span></div>
-        <h4>Split views from outputs into two destinations</h4>
-        <p>Users piled live monitoring views and generate-and-share artifacts into one "views &amp; outputs" group. I split them into two separate top-level destinations — <b>Dashboards</b> for live views, <b>Reporting</b> for the things you produce and share — because looking at your environment and producing an artifact are different intents.</p>
+        <div class="mh"><span class="mtag split">regroup</span></div>
+        <h4>Live views, split from shareable outputs</h4>
+        <p><em>Looking at</em> your environment and <em>producing</em> something to share can look alike, but they're different intents. They became two separate destinations — <b>Dashboards</b> for live views, <b>Reporting</b> for what you generate and share.</p>
       </div>
     </div>
   </div>

@@ -218,7 +218,7 @@
     <div class="read" style="margin-top:36px;">
       <p><strong>What research consistently returned:</strong> users struggled with findability — long menus and cluttered pages made navigation frustrating — and transient navigation left them unsure where they were or where they could go next. That, plus the ambiguity of early post-acquisition ownership, is what the IA had to solve.</p>
     </div>
-    <img class="shot zoomable" src="fmia-research-board.jpg" alt="Research board — inspiration gathering, competitive audit, card sorting, and tree testing">
+    <img class="shot zoomable" src="fmia-research-board.jpg" data-full="fmia-research-board-2x.jpg" alt="Research board — inspiration gathering, competitive audit, card sorting, and tree testing">
     <div class="caption">Research board — inspiration &amp; competitive audit, card sorting, and tree testing</div>
   </div>
 </section>
@@ -518,7 +518,7 @@
     else { img.className = 'zoomed'; }
   }
   for(var i=0;i<shots.length;i++){
-    shots[i].addEventListener('click', function(){ open(this.currentSrc || this.src, this.alt); });
+    shots[i].addEventListener('click', function(){ open(this.getAttribute('data-full') || this.currentSrc || this.src, this.alt); });
   }
   img.addEventListener('click', function(e){ e.stopPropagation(); toggleZoom(); });
   lb.addEventListener('click', function(e){ if(e.target === lb) close(); });

@@ -135,14 +135,12 @@
     </div>
 
     <div class="rows">
-      <div class="row reveal"><div class="rk">01</div><div class="rt"><b>The structure didn't scale.</b> There was no room to add another top level menu item and almost every top level menu item was saturated. Each and every user-created dashboard sat as its own item under Dashboards, cluttering the menu as customers built more. Roadmap visual tools like Topology and Netflow were slated to live under Monitoring — buried, when they should have been first-class. Settings became a home for everything that didn't belong anywhere else.</div></div>
+      <div class="row reveal"><div class="rk">01</div><div class="rt"><b>The structure didn't scale.</b> Every user-created dashboard sat as its own item under Dashboards, cluttering the menu as customers built more. Roadmap visual tools like Topology and Netflow were slated to live under Monitoring — buried, when they should have been first-class.</div></div>
       <div class="row reveal"><div class="rk">02</div><div class="rt"><b>It broke from Fortinet's ecosystem — structurally, not just visually.</b> Every other Fortinet cloud product shared a global nav for moving between cloud offerings. FortiMonitor's top navigation had no room to host it, so the more we built, the further the product drifted from the ecosystem it was meant to join.</div></div>
     </div>
 
-    <img class="shot" src="fmia-forticloud-services.png" alt="The FortiGate Cloud global navigation with the Services menu open — a directory of Fortinet cloud offerings including Asset Management, IAM, FortiManager Cloud, FortiAnalyzer Cloud, FortiMail, FortiWeb, FortiSASE and more">
-    <div class="caption">Every Fortinet cloud product shared a global nav for moving between offerings — FortiMonitor's top nav had no room for it</div>
-    <img class="shot" src="fmia-forticloud-iam.png" alt="A FortiCloud IAM screen showing the shared ecosystem pattern — a left-hand navigation for the product, with global Services and Support switchers in the top bar">
-    <div class="caption">The FortiCloud pattern FortiMonitor had to align with — a left nav for the product, global switchers up top</div>
+    <img class="shot" src="fmia-forticloud-merged.png" alt="The FortiCloud shared UI pattern — a product with a left-hand navigation, and a global Services menu in the top bar opened to reveal the full directory of Fortinet cloud offerings including Asset Management, IAM, FortiManager Cloud, FortiMail, FortiWeb and FortiSASE">
+    <div class="caption">Every Fortinet cloud product opened a global Services menu to move between offerings — FortiMonitor's top nav had no room to host it</div>
 
     <div class="read" style="margin-top:40px;">
       <p>So the argument I had to make wasn't <em>"let's fix the navigation."</em> It was <strong>"this is an architecture problem, and we need to step back from it."</strong></p>
@@ -232,7 +230,7 @@
       <div class="eyebrow"><span class="num">05</span> The core move</div>
       <h2 class="section-head">Interpreting the card sort — not transcribing it.</h2>
       <p class="lead">The card sort didn't hand me a menu. Its most important read wasn't the clusters themselves — it was their <em>coarseness</em>.</p>
-      <p>Five broad affinity clusters emerged. But in two places, the sort simply <em>reproduced</em> the confusion I was trying to fix: users lumped everything configurable into one pile — exactly like the old Settings menu had trained them to — and they merged planned maintenance with unplanned incidents. Research told me how users <span class="obs">currently think</span>; my job was to decide where that thinking should be <span class="des">honored</span> and where it was an artifact of the broken structure.</p>
+      <p>Five broad affinity clusters emerged — but they were coarse. In two places the sort simply <em>reproduced</em> the confusion I was trying to fix: users lumped everything configurable into one pile, exactly as the old Settings menu had trained them, and they merged planned maintenance with unplanned incidents. In a third, they grouped things that only looked alike — live views and shareable outputs — that actually serve different intents. Research told me how users <span class="obs">currently think</span>; my job was to decide where to <span class="obs">honor</span> that thinking and where the grouping was too coarse to build on.</p>
     </div>
   </div>
 
@@ -266,7 +264,8 @@
             <li><b>Monitoring</b><span class="tag">monitored objects + the controls that shape them (tags, metrics, policies)</span></li>
             <li><b>Incidents</b><span class="tag">absorbed countermeasures + alert timelines</span></li>
             <li><b>Maintenance</b><span class="tag">promoted out of the events pile — planned, not unplanned</span></li>
-            <li><b>Dashboards / Reporting</b><span class="tag">live views split from generate-and-share outputs</span></li>
+            <li><b>Dashboards</b><span class="tag">live views — infra map, topology, netflow, personal dashboards</span></li>
+            <li><b>Reporting</b><span class="tag">split out from the same pile — things you produce &amp; share</span></li>
             <li><b>Teams &amp; Activity</b><span class="tag">what genuinely remained: people, access, usage</span></li>
           </ul>
         </div>
@@ -281,7 +280,7 @@
   <div class="wrap reveal">
     <div class="read" style="margin-top:44px;">
       <h3 class="subhead">Three interpretation moves</h3>
-      <p>Each move is a decision about whether to <span class="obs">honor</span> what users grouped or to <span class="des">override</span> it because the grouping was a scar from the old structure.</p>
+      <p>Most clusters I <span class="obs">honored</span> — monitored objects became Monitoring, account and utility became Teams &amp; Activity. These three are where the grouping was too coarse to build on, so I <span class="des">overrode</span> it and split it apart:</p>
     </div>
     <div class="moves">
       <div class="move reveal">
@@ -295,9 +294,9 @@
         <p>They clustered together because both live on a timeline — but maintenance is <em>planned</em> and incidents are <em>unplanned</em>: a different mental mode and urgency. Burying planned downtime inside incident response was part of the original problem.</p>
       </div>
       <div class="move reveal">
-        <div class="mh"><span class="mtag keep">honor</span></div>
-        <h4>Split views from outputs by intent</h4>
-        <p>Users treated live monitoring views and generate-and-share artifacts as one "views &amp; outputs" pile. I honored the distinction they implied: live views anchored <b>Dashboards</b>; things you produce and share became <b>Reporting</b>.</p>
+        <div class="mh"><span class="mtag split">override</span></div>
+        <h4>Split views from outputs into two destinations</h4>
+        <p>Users piled live monitoring views and generate-and-share artifacts into one "views &amp; outputs" group. I split them into two separate top-level destinations — <b>Dashboards</b> for live views, <b>Reporting</b> for the things you produce and share — because looking at your environment and producing an artifact are different intents.</p>
       </div>
     </div>
   </div>
